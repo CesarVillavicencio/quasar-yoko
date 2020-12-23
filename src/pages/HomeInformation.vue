@@ -26,90 +26,26 @@
         contain>
       </q-img>
 
-      <!-- <div class="q-pt-md q-gutter-lg row justify-center text-center">
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="add_business" to="/homeInformation/Check" />
-          <p class="menu">Check in time</p>  
-        </div>
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="vpn_key" to="/homeInformation/Gaining access"/>
-          <p class="menu">Gaining Access</p>  
-        </div>
-        
-        <div class="negro">
-          <q-btn class="buttons"  icon="wifi" to="/homeInformation/Wifi"/>
-          <p class="menu">Wifi Access</p>  
-        </div>
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="location_on"  to="/homeInformation/Adress"/>
-          <p class="menu">Adress</p>  
-        </div>
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="emoji_transportation" to="/homeInformation/directions" />
-          <p class="menu">Directions</p>  
-        </div>
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="map"  to="/homeInformation/transportation"/>
-          <p class="menu">Transportation</p>  
-        </div>
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="local_parking"  to="/homeInformation/parking"/>
-          <p class="menu">Parking</p>  
-        </div>
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="o_wb_sunny" to="/homeInformation/weather" />
-          <p class="menu">Weather</p>
-        </div>
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="donut_large" />
-          <p class="menu">All the corner</p>  
-        </div>
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="single_bed" />
-          <p class="menu">Ammenities</p>  
-        </div>
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="dashboard" />
-          <p class="menu">Tips</p>
-        </div>
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="list_alt" to="/houseRules"/>
-          <p class="menu">House rules</p>  
-        </div>
-
-      </div> -->
-
       <div class="q-pt-md q-gutter-lg justify-center text-center">
         
         <div class="row">
           <div class="col">
             <div class="negro">
-              <q-btn class="buttons"  icon="add_business" to="/homeInformation/Check" />
+              <q-btn class="buttons"  icon="add_business" :to="'/'+ruta+'/homeInformation/Check'" />
               <p class="menu">Check in time</p>  
             </div>
           </div>
 
           <div class="col">
             <div class="negro">
-              <q-btn class="buttons"  icon="vpn_key" to="/homeInformation/Gaining access"/>
+              <q-btn class="buttons"  icon="vpn_key" :to="'/'+ruta+'/homeInformation/Gaining access'"/>
               <p class="menu">Gaining Access</p>  
             </div>
           </div>
 
           <div class="col">
             <div class="negro">
-              <q-btn class="buttons"  icon="wifi" to="/homeInformation/Wifi"/>
+              <q-btn class="buttons"  icon="wifi" :to="'/'+ruta+'/homeInformation/Wifi'"/>
               <p class="menu">Wifi Access</p>  
             </div>
           </div>
@@ -118,7 +54,7 @@
         <div class="row">
           <div class="col">
             <div class="negro">
-              <q-btn class="buttons"  icon="location_on"  to="/homeInformation/Adress"/>
+              <q-btn class="buttons"  icon="location_on"  :to="'/'+ruta+'/homeInformation/Adress'"/>
               <p class="menu">Adress</p>  
             </div>
           </div>
@@ -142,14 +78,14 @@
         <div class="row">
           <div class="col">
             <div class="negro">
-              <q-btn class="buttons"  icon="local_parking"  to="/homeInformation/parking"/>
+              <q-btn class="buttons"  icon="local_parking"  to=""/>
               <p class="menu">Parking</p>  
             </div>
           </div>
 
           <div class="col">
             <div class="negro">
-              <q-btn class="buttons"  icon="o_wb_sunny" to="/homeInformation/weather" />
+              <q-btn class="buttons"  icon="o_wb_sunny" to="" />
               <p class="menu">Weather</p>
             </div>
           </div>
@@ -179,7 +115,8 @@
 
           <div class="col">
             <div class="negro">
-              <q-btn class="buttons"  icon="list_alt" to="/houseRules"/>
+              <!-- <q-btn class="buttons"  icon="list_alt" to="/houseRules"/> -->
+              <q-btn class="buttons"  icon="list_alt" :to="'/'+ruta+'/homeInformation/rules'" />
               <p class="menu">House rules</p>  
             </div>
           </div>
@@ -214,12 +151,16 @@ export default {
   data(){
     return{
       name: 'homeInformation',
+      ruta: this.$route.params.id,
     }    
   },
 
   mounted(){
 
   },
+
+
+
 
   methods:{
 

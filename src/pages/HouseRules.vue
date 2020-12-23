@@ -88,11 +88,19 @@ export default {
       number:1,
       datos:[],
       propiedades:[],
+      ruta: this.$route.params.id,
     }    
   },
 
   mounted(){
     this.loadData(), this.loadPropiedad();
+  },
+
+  computed: {
+    ...mapGetters('datos', [
+            'getInformacion',
+        ]),
+    
   },
 
   methods:{

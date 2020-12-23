@@ -31,16 +31,17 @@
         <q-icon name="child_care" style="font-size: 25px"></q-icon>
       </div>
 
-      <div class="row q-pt-lg " v-if="datos.data">
+      <div class="row q-pt-lg " v-if="getInformacion.data">
 
-        <p v-if="this.ruta =='Wifi'">{{datos.data.wifi_details}}</p>
+        <p v-if="this.ruta =='Wifi'" v-html="getInformacion.data.property.wifi_details">{{getInformacion.data.property.wifi_details}}</p>
 
-        <p v-if="this.ruta =='Check'">{{datos.data.check_in_details}}</p>
+        <p v-if="this.ruta =='Check'" v-html="getInformacion.data.property.check_in_details"></p>
 
-        <p v-if="this.ruta =='Adress'">{{datos.data.address}}</p>
+        <p v-if="this.ruta =='Adress'">{{getInformacion.data.property.address}}</p>
 
-        <p v-if="this.ruta =='Gaining access'">{{datos.data.access_details}}</p>
+        <p v-if="this.ruta =='Gaining access'">{{getInformacion.data.property.access_details}}</p>
 
+        <p v-if="this.ruta =='rules'" v-html="getInformacion.data.property.rules"></p>
       </div>
 
       <!-- <q-toolbar class="q-mt-xl bg-grey-3 shadow-2 rounded-borders">
@@ -78,6 +79,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
 export default {
   data:function(){
     return{
@@ -91,17 +93,18 @@ export default {
   },
 
   mounted(){
-    this.loadData();
+    // this.loadData();
+  },
+
+  computed: {
+    ...mapGetters('datos', [
+            'getInformacion',
+        ]),
+    
   },
 
   methods:{
-    test(){
-      alert("boton action");
-      },
-
-    loadData () {
-      // alert("entrando");
-      
+    loadData () {      
       this.$axios.get('https://y.codigorex.com/api/v1/property')
       .then((response) => {
         this.datos = response.data
