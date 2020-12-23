@@ -1,0 +1,171 @@
+<template>
+<q-page class="flex-center back">
+
+  <div class="q-pa-md flex flex-center background">
+    <div style="max-width: 300px">
+      <div class="q-pb-md row flex flex-center">
+        <q-input rounded outlined :dense="true">
+          <template v-slot:prepend>          
+            <q-icon name="search"></q-icon>
+          </template>
+
+        </q-input>
+         <q-icon name="o_shopping_cart" class="q-ml-md" style="font-size: 25px"></q-icon>
+      </div>
+
+      <p class="welcome" @click="$router.back()"> 
+        <q-icon name="chevron_left" style="font-size: 25px; color:#fed502;"></q-icon>
+      Home Information
+      </p>
+      <p class="text-weight-bold titulo">{{ruta}}</p>
+
+       <q-img
+        class ="vertical-top rounded-borders"
+        src=" http://placehold.it/900x300"
+        
+        contain>
+      </q-img>
+
+      <div class="row q-pt-lg">
+        <q-icon name="smoke_free" class="q-pr-md" style="font-size: 25px"></q-icon>
+        <q-icon name="child_care" style="font-size: 25px"></q-icon>
+      </div>
+
+      <div class="row q-pt-lg " v-if="datos.data">
+
+        <p v-if="this.ruta =='Wifi'">{{datos.data.wifi_details}}</p>
+
+        <p v-if="this.ruta =='Check'">{{datos.data.check_in_details}}</p>
+
+        <p v-if="this.ruta =='Adress'">{{datos.data.address}}</p>
+
+        <p v-if="this.ruta =='Gaining access'">{{datos.data.access_details}}</p>
+
+      </div>
+
+      <!-- <q-toolbar class="q-mt-xl bg-grey-3 shadow-2 rounded-borders">
+        <q-btn flat round dense icon="o_thumb_up" class="q-mr-sm" to="/" />
+        <q-space />
+        <q-btn flat round dense icon="o_home" class="q-mr-sm active" />
+        <q-space />
+        <q-btn flat round dense icon="o_store" class="q-mr-sm" />
+        <q-space />
+        <q-btn flat round dense icon="o_local_activity" class="q-mr-sm" @click="test" />
+        <q-space />
+        <q-btn flat round dense icon="o_legend_toggle" class="q-mr-sm" to="/details"/>        
+      </q-toolbar> -->
+      <div class="fixed-bottom sixe " >
+        <q-toolbar slot="footer" class="q-mt-xl bg-grey-3 shadow-2 rounded-borders centersize">
+
+          <q-btn flat round dense icon="o_thumb_up" class="q-mr-sm" to="/" />
+          <q-space />
+          <q-btn flat round dense icon="o_home" class="q-mr-sm active" to="/homeinformation" />
+          <q-space />
+          <q-btn flat round dense icon="o_store" class="q-mr-sm" />
+          <q-space />
+          <q-btn flat round dense icon="o_local_activity" class="q-mr-sm" />
+          <q-space />
+          <q-btn flat round dense icon="o_legend_toggle" class="q-mr-sm" />
+
+        </q-toolbar>
+      </div>
+
+
+    </div>
+  </div>
+</q-page>
+  
+</template>
+
+<script>
+export default {
+  data:function(){
+    return{
+      name: 'App',
+      text: 'esto es texto',
+      number:1,
+      datos:[],
+      ruta: this.$route.params.title,
+      wifi:'',
+    }    
+  },
+
+  mounted(){
+    this.loadData();
+  },
+
+  methods:{
+    test(){
+      alert("boton action");
+      },
+
+    loadData () {
+      // alert("entrando");
+      
+      this.$axios.get('https://y.codigorex.com/api/v1/property')
+      .then((response) => {
+        this.datos = response.data
+        console.log(this.datos);
+        })
+        .catch(() => {
+          this.$q.notify({
+            color: 'negative',
+            position: 'top',
+            message: 'Usando notificaciones',
+            icon: 'report_problem'
+          })
+        })
+      },
+
+    }
+
+
+}
+</script>
+
+<style>
+.back{
+  background-color: #fbfbfb;
+}
+.welcome{
+  /*color: #a9a9a9;*/
+  font-weight: bold;
+  color: black;
+  font-size: 12px;
+  margin-bottom: 0 !important;
+}
+
+.titulo{
+  margin-top: 0 !important;
+  font-size: 20px;
+}
+
+.texto{
+  font-size: 12px;
+}
+
+.arrow{
+  color: #fed502;
+  font-size: 22px !important;
+  font-weight: bold;
+}
+
+.active{
+  background-color: #fed502;
+  color:white;
+  border-radius: 25% !important;
+}
+
+/*toolbar*/
+.sixe{
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 15px;
+}
+.centersize{
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+</style>
