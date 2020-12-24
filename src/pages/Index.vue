@@ -1,7 +1,6 @@
 <template>
 <q-page class="flex-center black">
-
-  <div class="q-pa-md flex flex-center" v-if="getInformacion.data.property">
+  <div class="q-pa-md flex flex-center" v-if="getInformacion.data">
     <div style="max-width: 300px">
       <div class="q-pb-md row flex flex-center">
         <div class="row" style="padding-top:7em;">
@@ -30,7 +29,6 @@
           @click="$router.push({ name: 'recommendations', params: { id: ruta } })"
           >         
            {{transformFecha(getInformacion.data.check_in_date)}} -  {{transformFecha(getInformacion.data.check_out_date)}}
-          <!-- 11/Nov - 12/Dic -->
         </q-btn>
       </div>
 
@@ -52,6 +50,7 @@
 <script>
 import { mapGetters } from "vuex"
 import moment from 'moment'
+import {Loading, QSpinnerGears} from 'quasar'
 
 export default {
   data(){
@@ -75,15 +74,29 @@ export default {
 
   methods:{
     getFromVuex(){
+      this.$q.loading.show()
       this.$store.dispatch('datos/getDatos', this.ruta);
       this.$store.getters['datos/getInformacion'];
       this.datos = this.getInformacion;
       console.log(this.datos);
+      this.$q.loading.hide()
     },
 
     transformFecha(date){
       return moment(String(date)).format('DD/MMM')
-    }
+    },
+
+    // showLoading () {
+    //   this.$q.loading.show()
+
+    //   // hiding in 5s
+    //   this.timer = setTimeout(() => {
+    //     this.$q.loading.hide()
+    //     this.timer = void 0
+    //   }, 5000)
+    // }
+
+
   }
 
 }

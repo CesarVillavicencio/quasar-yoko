@@ -51,7 +51,7 @@
         </div>
         
         <div class="negro">
-          <q-btn class="buttons"  icon="local_bar" to="/recommendations/party"/>
+          <q-btn class="buttons"  icon="local_bar"/>
           <p class="menu">Party</p>  
         </div>
 

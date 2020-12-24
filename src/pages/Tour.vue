@@ -32,7 +32,7 @@
       </q-carousel>
 
       <div class="texto q-pt-md">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, ex eget tempus venenatis, libero enim tempor odio, consectetur rutrum ipsum dolor eget purus. Mauris malesuada, lectus non pretium rhoncus, </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan, ex eget tempus venenatis, libero enim tempor odio, consectetur rutrum ipsum dolor eget purus. Mauris malesuada, lectus non pretium rhoncus, consectetur adipiscing elit. Nulla accumsan, ex eget tempus venenatis, libero enim tempor odio, consectetur rutrum ipsum dolor eget purus. </p>
       </div>
 
       <div class="q-pt-md">
@@ -51,7 +51,7 @@
         <gmap-map
           :center="center"
           :zoom="zoom"
-          style="width: 100%; height: 100px;">
+          style="width: 100%; height: 150px;">
 
           <gmap-marker v-for="(marker) in markers"
           :key="marker.key"
@@ -63,26 +63,13 @@
       </div>
 
       <div class="flex flex-center q-pt-md">
-        <q-btn class="button" color="black" label="Reserva" />
-        <q-btn class="button" color="black" label="Reservacion" />  
+        <q-btn class="button" color="black" label="Reserva" @click="reserva()"/>
+        <!-- <q-btn class="button" color="black" label="Reservacion" />   -->
       </div>
       
       <div>
         GPS position: <strong>{{ position }} - {{lat}} , {{lng}}</strong>
-      </div>
-
-      <!-- <q-toolbar class="q-mt-xl bg-grey-3 shadow-2 rounded-borders">
-        <q-btn flat round dense icon="o_thumb_up" class="q-mr-sm" to="/" />
-        <q-space />
-        <q-btn flat round dense icon="o_home" class="q-mr-sm" />
-        <q-space />
-        <q-btn flat round dense icon="o_store" class="q-mr-sm" />
-        <q-space />
-        <q-btn flat round dense icon="o_local_activity" class="q-mr-sm" />
-        <q-space />
-        <q-btn flat round dense icon="o_legend_toggle" class="q-mr-sm" to="/details"/>        
-      </q-toolbar> -->
-      
+      </div>      
 
     </div>
   </div>
@@ -148,6 +135,15 @@ export default {
         this.center.lng = position.coords.longitude;
         // console.log(position);
       });
+    },
+
+    reserva(){
+      this.$q.notify({
+        color: 'black',
+        position: 'top',
+        message: 'Reserva en construccion',
+        icon: 'schedule'
+      })
     }
   },
 }

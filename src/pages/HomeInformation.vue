@@ -61,14 +61,14 @@
 
           <div class="col">
             <div class="negro">
-              <q-btn class="buttons"  icon="emoji_transportation" to="/homeInformation/directions" />
+              <q-btn class="buttons"  icon="emoji_transportation" />
               <p class="menu">Directions</p> 
             </div>
           </div>
 
           <div class="col">
             <div class="negro">
-              <q-btn class="buttons"  icon="map"  to="/homeInformation/transportation"/>
+              <q-btn class="buttons"  icon="map"/>
               <p class="menu">Transportation</p>  
             </div>
           </div>

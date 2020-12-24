@@ -204,7 +204,7 @@ export default {
 
   methods:{
     getFromVuex(){
-      // this.$store.dispatch('datos/getDatos');
+      this.$store.dispatch('datos/getDatos', this.ruta);
       // this.$store.getters['datos/getInformacion'];
       // this.datos = this.getInformacion;
     },

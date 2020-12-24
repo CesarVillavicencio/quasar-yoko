@@ -36,7 +36,7 @@
         </div>
       </div>
  
-      <router-link to ="/producto" v-for="k in 5">
+      <router-link :to="'/'+ruta+'/tours/id'" v-for="k in 5">
 
         <q-img class="q-mb-md q-mt-md vertical-top rounded-borders" 
         src="~assets/imgPrueba.jpg"  
@@ -48,39 +48,6 @@
       </q-img>
 
       </router-link>
-
-      <!-- <q-toolbar class="q-mt-xl bg-grey-3 shadow-2 rounded-borders">
-        <q-btn flat round dense icon="o_thumb_up" class="q-mr-sm active" to="/recommendations" />
-        <q-space />
-        <q-btn flat round dense icon="o_home" class="q-mr-sm"  to="/homeInformation"/>
-        <q-space />
-        <q-btn flat round dense icon="o_store" class="q-mr-sm" to="/"/>
-        <q-space />
-        <q-btn flat round dense icon="o_local_activity" class="q-mr-sm" />
-        <q-space />
-        <q-btn flat round dense icon="o_legend_toggle" class="q-mr-sm" to="/details"/>        
-      </q-toolbar> -->
-        
-       <!--  <div class="q-pa-md">
-          <pre class="q-ma-none container">{{direccion}} - {{posicion}}</pre>
-          <q-scroll-observer @scroll="onScrolling"></q-scroll-observer>
-        </div> -->
-
-<!--       <div class="col fixed-bottom sixe navbar" >
-        <q-toolbar slot="footer" class="q-mt-xl bg-grey-3 shadow-2 rounded-borders centersize"  :class="{ 'hidden': !showNavbar }">
-
-          <q-btn flat round dense icon="o_thumb_up" class="q-mr-sm" to="/" />
-          <q-space />
-          <q-btn flat round dense icon="o_home" class="q-mr-sm" to="/homeinformation" />
-          <q-space />
-          <q-btn flat round dense icon="o_store" class="q-mr-sm" />
-          <q-space />
-          <q-btn flat round dense icon="o_local_activity" class="q-mr-sm" />
-          <q-space />
-          <q-btn flat round dense icon="o_legend_toggle" class="q-mr-sm" />
-
-        </q-toolbar>
-      </div> -->
 
     </div>      
 
@@ -133,40 +100,18 @@ export default {
           icon: 'casino'
         }
       ],
-
-      showNavbar: true,
-      lastScrollPosition: 0,
-      scrollValue: 0,
-      OFFSET:60
+      ruta: this.$route.params.id,
     }
   },
 
   mounted () {
 
-    this.lastScrollPosition = window.pageYOffset
-    window.addEventListener('scroll', this.onScroll)
-    // const viewportMeta = document.createElement('meta')
-    // viewportMeta.name = 'viewport'
-    // viewportMeta.content = 'width=device-width, initial-scale=1'
-    // document.head.appendChild(viewportMeta)
   },
 
   beforeDestroy () {
-    window.removeEventListener('scroll', this.onScroll)
   },
 
   methods: {
-    onScroll (){
-      if (window.pageYOffset < 0) {
-        return
-      }
-      if (Math.abs(window.pageYOffset - this.lastScrollPosition) < OFFSET) {
-        return
-      }
-      this.showNavbar = window.pageYOffset < this.lastScrollPosition
-      this.lastScrollPosition = window.pageYOffset
-    }
-
 
   }
 }

@@ -65,10 +65,10 @@ const routes = [
   },
 
   {
-    path: ':id/producto',
+    path: '/:id/tours/id',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Producto.vue') }
+      { path: '', name:'tour', component: () => import('pages/Tour.vue') }
     ]
   },
 
