@@ -68,7 +68,7 @@
       </div>
       
       <div>
-        GPS position: <strong>{{ position }} - {{lat}} , {{lng}}</strong>
+        GPS position: <strong>{{ position }} - {{center.lat}} , {{center.lng}}</strong>
       </div>      
 
     </div>
@@ -130,7 +130,7 @@ export default {
       Geolocation.getCurrentPosition().then(position => {
         console.log(position);
         this.position = position
-        alert(this.position);
+        // alert(this.position);
         this.center.lat = position.coords.latitude;
         this.center.lng = position.coords.longitude;
         // console.log(position);

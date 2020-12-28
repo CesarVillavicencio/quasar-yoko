@@ -4,24 +4,39 @@
 	    <router-view />
   </div>
 </template>
+
 <script>
+  import { mapGetters } from "vuex"
 export default {
   data:function(){
     return{
       name: 'App',
-      text: 'esto es texto',
-      number:1,
       data:'',
+      ruta:this.$route.params.id,
     }    
   },
 
   mounted(){
+    // this.getFromVuex();
+  },
 
+  computed: {
+    ...mapGetters('datos', [
+            'getInformacion',
+        ]),
+    
   },
 
   methods:{
-
-    }
+    getFromVuex(){
+      this.$q.loading.show()
+      this.$store.dispatch('datos/getDatos', this.ruta);
+      this.$store.getters['datos/getInformacion'];
+      this.datos = this.getInformacion;
+      console.log(this.datos);
+      this.$q.loading.hide()
+    },
+  }
 }
 </script>
 

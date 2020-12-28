@@ -138,7 +138,7 @@
         </div>
 
         <div class="col-7">
-          <p class="title">Share your location</p>
+          <p class="title" @click="share()">Share your location</p>
           <!-- <p class="text-weight-bold">911</p> -->
         </div>
         <div class="col-3">
@@ -211,7 +211,21 @@ export default {
 
     transformFecha(date){
       return moment(String(date)).format('DD/MMM')
+    },
+
+    share() {
+    var text = 'Mi ubicación';
+    if ('share' in navigator) {
+        navigator.share({
+            title: document.title,
+            text: text,
+            url: 'http://www.google.com/maps/place/49.46800006494457,17.11514008755796',
+        })
+    } else {
+        // Here we use the WhatsApp API as fallback; remember to encode your text for URI
+        location.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(text + ' - ') + 'http://www.google.com/maps/place/49.46800006494457,17.11514008755796';
     }
+}
   }
 
 }

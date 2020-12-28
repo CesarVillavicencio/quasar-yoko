@@ -16,7 +16,7 @@
          <q-icon name="o_shopping_cart" class="q-ml-md" style="font-size: 25px"></q-icon>
       </div>
 
-      <p class="welcome">Hi, Ana Maria Castrillón Rejón</p>
+      <p v-if="getInformacion.data" class="welcome">Hi, {{getInformacion.data.first_name}} {{getInformacion.data.last_name}}</p>
       <p class="text-weight-bold titulo">Recommendations</p>
 
        <q-img
@@ -37,56 +37,83 @@
         </div>
       </q-img>
 
-      <div class="q-pt-md q-gutter-lg row justify-center text-center">
+      <div class="q-pt-md q-gutter-lg justify-center text-center">
 
-        <div class="negro">
-          <q-btn class="buttons"  icon="location_on" @click="$router.push({ name: 'attractions', params: { id: ruta } })" />
+        <div class="row">
 
-          <p class="menu">Atractions</p>  
+          <div class="col">
+            <div class="negro">
+              <q-btn class="buttons"  icon="location_on" :to="'/'+ruta+'/attractions'" />
+              <p class="menu">Atractions</p>  
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="negro">
+              <q-btn class="buttons"  icon="restaurant_menu"/>
+              <p class="menu">What to eat</p>  
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="negro">
+              <q-btn class="buttons"  icon="local_bar" />
+              <p class="menu">Party </p>  
+            </div>
+          </div>
+          
         </div>
 
-        <div class="negro">
-          <q-btn class="buttons"  icon="restaurant_menu" />
-          <p class="menu">What to eat</p>  
-        </div>
-        
-        <div class="negro">
-          <q-btn class="buttons"  icon="local_bar"/>
-          <p class="menu">Party</p>  
+        <div class="row">
+
+          <div class="col">
+            <div class="negro">
+              <q-btn class="buttons"  icon="shopping_bag" />
+              <p class="menu">Shopping</p>  
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="negro">
+              <q-btn class="buttons"  icon="add_box" />
+              <p class="menu">Services</p>  
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="negro">
+              <q-btn class="buttons"  icon="local_taxi" />
+              <p class="menu">Transport </p>  
+            </div>
+          </div>
+          
         </div>
 
-        <div class="negro">
-          <q-btn class="buttons"  icon="shopping_bag" />
-          <p class="menu">Shopping</p>  
+        <div class="row">
+
+          <div class="col">
+            <div class="negro">
+              <q-btn class="buttons"  icon="map"/>
+              <p class="menu">Transport</p>  
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="negro">
+              <q-btn class="buttons"  icon="dashboard" />
+              <p class="menu">Specialized <br> store</p>  
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="negro">
+              <q-btn class="buttons"  icon="notifications_active"/>
+              <p class="menu">Emergency </p>  
+            </div>
+          </div>
+          
         </div>
 
-        <div class="negro">
-          <q-btn class="buttons"  icon="add_box" />
-          <p class="menu">Services</p>  
-        </div>
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="local_taxi" />
-          <p class="menu">Transport</p>  
-        </div>
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="map" />
-          <p class="menu">Transport</p>  
-        </div>
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="dashboard" />
-          <p class="menu">Specialized <br> store</p>
-        </div>
-
-        <div class="negro">
-          <q-btn class="buttons"  icon="notifications_active" />
-          <p class="menu">Emergency</p>  
-        </div>
-        <p>
-        </p>
-        <!-- <q-btn class="buttons"  icon="shopping_bag" v-for="n in 6" :key="'xs-${n}'" /> -->
       </div>
 
      <!--  <q-toolbar class="q-mt-xl bg-grey-3 shadow-2 rounded-borders">
@@ -121,7 +148,7 @@ export default {
   },
 
   mounted(){
-
+    this.getFromVuex();
   },
 
   computed: {
@@ -131,7 +158,14 @@ export default {
   },
 
   methods:{
-    
+    getFromVuex(){
+      this.$q.loading.show()
+      this.$store.dispatch('datos/getDatos', this.ruta);
+      this.$store.getters['datos/getInformacion'];
+      this.datos = this.getInformacion;
+      console.log(this.datos);
+      this.$q.loading.hide()
+    },
   }
 
 }
@@ -183,5 +217,7 @@ export default {
   color:white;
   border-radius: 25% !important;
 }
+
+
 
 </style>

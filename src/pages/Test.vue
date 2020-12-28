@@ -44,18 +44,7 @@
         <p v-if="this.ruta =='rules'" v-html="getInformacion.data.property.rules"></p>
       </div>
 
-      <!-- <q-toolbar class="q-mt-xl bg-grey-3 shadow-2 rounded-borders">
-        <q-btn flat round dense icon="o_thumb_up" class="q-mr-sm" to="/" />
-        <q-space />
-        <q-btn flat round dense icon="o_home" class="q-mr-sm active" />
-        <q-space />
-        <q-btn flat round dense icon="o_store" class="q-mr-sm" />
-        <q-space />
-        <q-btn flat round dense icon="o_local_activity" class="q-mr-sm" @click="test" />
-        <q-space />
-        <q-btn flat round dense icon="o_legend_toggle" class="q-mr-sm" to="/details"/>        
-      </q-toolbar> -->
-      <div class="fixed-bottom sixe " >
+      <!-- <div class="fixed-bottom sixe " >
         <q-toolbar slot="footer" class="q-mt-xl bg-grey-3 shadow-2 rounded-borders centersize">
 
           <q-btn flat round dense icon="o_thumb_up" class="q-mr-sm" to="/" />
@@ -69,7 +58,7 @@
           <q-btn flat round dense icon="o_legend_toggle" class="q-mr-sm" />
 
         </q-toolbar>
-      </div>
+      </div> -->
 
 
     </div>

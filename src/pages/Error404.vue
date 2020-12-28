@@ -1,8 +1,14 @@
 <template>
-  <div class="fullscreen bg-blue text-white text-center q-pa-md flex flex-center">
+  <div class="fullscreen bg-black text-white text-center q-pa-md flex flex-center">
     <div>
       <div style="font-size: 30vh">
-        404
+        <div class="flex flex-center">
+          <img
+          class ="yokologo"
+          alt="yoko logo"
+          src="~assets/yokoLogo.png"
+          >
+        </div>
       </div>
 
       <div class="text-h2" style="opacity:.4">
@@ -11,8 +17,8 @@
 
       <q-btn
         class="q-mt-xl"
-        color="white"
-        text-color="blue"
+        color = "yellow"
+        text-color="black"
         unelevated
         to="/"
         label="Go Home"
