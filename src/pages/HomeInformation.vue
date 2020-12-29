@@ -16,7 +16,7 @@
          <q-icon name="o_shopping_cart" class="q-ml-md" style="font-size: 25px"></q-icon>
       </div>
 
-      <p class="welcome">Hi, Ana Maria Castrillón Rejón</p>
+      <p class="welcome">Hi, {{getInformacion.data.first_name}} {{getInformacion.data.last_name}}</p>
       <p class="text-weight-bold titulo">Home Information</p>
 
        <q-img
@@ -146,26 +146,38 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
+
 export default {
-  // components: { MainLayout },
+// components: { MainLayout },
   data(){
     return{
       name: 'homeInformation',
+      datos:[],
       ruta: this.$route.params.id,
     }    
   },
 
   mounted(){
-
+    // this.getFromVuex();
   },
 
-
-
+  computed: {
+    ...mapGetters('datos', [
+            'getInformacion',
+        ]),
+  },
 
   methods:{
-
+    getFromVuex(){
+      this.$q.loading.show()
+      this.$store.dispatch('datos/getDatos', this.ruta);
+      this.$store.getters['datos/getInformacion'];
+      this.datos = this.getInformacion;
+      console.log(this.datos);
+      this.$q.loading.hide()
+    },
   }
-
 
 }
 </script>
