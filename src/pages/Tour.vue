@@ -39,14 +39,6 @@
         <p style="font-weight:bold;">Location</p>
       </div>
 
-    <!--   <q-img
-        class ="vertical-top rounded-borders"
-        src="http://placehold.it/900x300"
-        
-        contain>
-        
-      </q-img> -->
-
       <div id="mapa">
         <gmap-map
           :center="center"

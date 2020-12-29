@@ -21,7 +21,7 @@
 
       <q-img
         class ="vertical-top rounded-borders"
-        src=" http://placehold.it/900x300"
+        src="~assets/900x300.png"
         
         contain>
       </q-img>
