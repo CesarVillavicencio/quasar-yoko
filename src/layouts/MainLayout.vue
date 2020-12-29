@@ -15,7 +15,7 @@
   </q-layout>
 </template>
 
-<script>
+<!-- <script>
 import Menu from 'components/Menu.vue'
 
 export default {
@@ -38,5 +38,47 @@ export default {
 
     }
 
+}
+</script>
+ -->
+<script>
+
+import { mapGetters } from "vuex"
+import Menu from 'components/Menu.vue'
+
+export default {
+components: { Menu },
+
+  data:function(){
+
+    return{
+      name: 'MainLayout',
+      data:'',
+      ruta:this.$route.params.id,
+    }    
+  },
+
+  mounted(){
+    this.getFromVuex();
+
+  },
+
+  computed: {
+    ...mapGetters('datos', [
+            'getInformacion',
+        ]),
+    
+  },
+
+  methods:{
+    getFromVuex(){
+      this.$q.loading.show()
+      this.$store.dispatch('datos/getDatos', this.ruta);
+      this.$store.getters['datos/getInformacion'];
+      this.datos = this.getInformacion;
+      console.log(this.datos);
+      this.$q.loading.hide()
+    },
+  }
 }
 </script>

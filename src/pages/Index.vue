@@ -26,7 +26,7 @@
           icon="date_range"
           unelevated
           no-caps
-          @click="$router.push({ name: 'recommendations', params: { id: ruta } })"
+          @click="$router.push({ name: 'homeInformation', params: { id: ruta } })"
           >         
            {{transformFecha(getInformacion.data.check_in_date)}} -  {{transformFecha(getInformacion.data.check_out_date)}}
         </q-btn>

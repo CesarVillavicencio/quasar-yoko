@@ -84,8 +84,8 @@ export default {
     },
 
     getRoute(){
-      if (this.ruta == "/recommendations") {this.buttons.one = true}
-      else if (this.ruta == "/homeinformation") {this.buttons.two = true}
+      if (this.$route.name == "recommendations") {this.buttons.one = true}
+      else if (this.$route.name == "homeInformation") {this.buttons.two = true}
     }
   }
 }

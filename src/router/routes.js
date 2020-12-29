@@ -20,7 +20,7 @@ const routes = [
     path: '/:id/homeInformation',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/HomeInformation.vue') }
+      { path: '', name:'homeInformation', component: () => import('pages/HomeInformation.vue') }
     ]
   },
 
@@ -28,7 +28,7 @@ const routes = [
     path: '/:id/houseRules',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/HouseRules.vue') }
+      { path: '', name:'houseRules', component: () => import('pages/HouseRules.vue') }
     ]
   },
 
@@ -60,7 +60,7 @@ const routes = [
     path: '/:id/homeInformation/:title',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', name:"homeInformation", component: () => import('pages/Test.vue') }
+      { path: '', component: () => import('pages/Test.vue') }
     ]
   },
 

@@ -108,7 +108,7 @@
 
           <div class="col">
             <div class="negro">
-              <q-btn class="buttons"  icon="dashboard" />
+              <q-btn class="buttons"  icon="dashboard"  @click="$router.push({ name: 'houseRules', params: { id: ruta } })"/>
               <p class="menu">Tips</p>
             </div>
           </div>

@@ -148,7 +148,7 @@ export default {
   },
 
   mounted(){
-    this.getFromVuex();
+    // this.getFromVuex();
   },
 
   computed: {
