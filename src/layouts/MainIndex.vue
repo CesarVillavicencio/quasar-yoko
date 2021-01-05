@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-page-container>
+    <q-page-container class="flex flex-center">
       <transition name="router-anim">
         <router-view />
       </transition>

@@ -1,6 +1,6 @@
 <template>
 <q-page class="flex-center black">
-  <div class="q-pa-md" v-if="getInformacion.data">
+ <div class="q-pa-md flex flex-center" v-if="getInformacion.data">
     <div style="max-width: 350px">
       <!-- <div class="q-pb-md row"> -->
 
