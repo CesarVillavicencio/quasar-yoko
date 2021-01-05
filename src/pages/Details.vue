@@ -18,7 +18,7 @@
           <p class="float-right"  @click="$router.back()">X</p>
         </div>
       </div>
-      <p class="text-weight-bold titulo">Hi, Ana María Castrillón Rejón</p>
+      <p class="text-weight-bold titulo">Hi, {{getInformacion.data.first_name}} {{getInformacion.data.last_name}}</p>
 
       <div class="row">
       <div class="col-4">
