@@ -1,11 +1,8 @@
 <template>
 
   <div class="q-pa-md flex flex-center background">
-    <div class="q-gutter-sm" style="max-width: 300px">
-      <!-- <span class="material-icons">
-      date_range
-      </span>
-      <q-input rounded outlined v-model="text" label="All you need in yoko" /> -->
+    <div >
+
       <div class="q-pb-md row flex flex-center">
         <q-input rounded outlined :dense="true">
           <template v-slot:prepend>          
@@ -20,7 +17,7 @@
       <p class="text-weight-bold titulo">Recommendations</p>
 
        <q-img
-        class ="vertical-top rounded-borders"
+        class ="vertical-top rounded-borders radius"
         src="~assets/900x300.png"
         style="width: 100%; height: 100px;"
         contain>
@@ -116,19 +113,6 @@
 
       </div>
 
-     <!--  <q-toolbar class="q-mt-xl bg-grey-3 shadow-2 rounded-borders">
-        <q-btn flat round dense icon="o_thumb_up" class="q-mr-sm active" to="/recommendations" />
-        <q-space />
-        <q-btn flat round dense icon="o_home" class="q-mr-sm"  to="/homeInformation"/>
-        <q-space />
-        <q-btn flat round dense icon="o_store" class="q-mr-sm" to="/"/>
-        <q-space />
-        <q-btn flat round dense icon="o_local_activity" class="q-mr-sm" />
-        <q-space />
-        <q-btn flat round dense icon="o_legend_toggle" class="q-mr-sm" to="/details"/>        
-      </q-toolbar> -->
-
-
     </div>
   </div>
 
@@ -193,8 +177,9 @@ export default {
 .buttons{
   /*color:white;*/
   background-color: #fed502;
-  height: 50px;
-  border-radius: 18px;
+  height: 60px;
+  width: 60px;
+  border-radius: 20px;
 }
 
 .titulo{
@@ -218,6 +203,9 @@ export default {
   border-radius: 25% !important;
 }
 
+.radius{
+  border-radius: 6px;
+}
 
 
 </style>

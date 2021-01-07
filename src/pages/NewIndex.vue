@@ -1,7 +1,7 @@
 <template>
 <q-page class="flex-center black">
  <div class="q-pa-md flex flex-center" v-if="getInformacion.data">
-    <div style="max-width: 350px">
+    <div style="max-width: 370px">
       <!-- <div class="q-pb-md row"> -->
 
         <div class="row" style="padding-top:7em;">
@@ -12,7 +12,7 @@
           </div>
           <div class="col-10 q-pl-lg q-pt-xs" >
               <p class="textoWhite yhis">Your host is</p> 
-              <p class="textoWhite hostName col-12">Host Name Host Name </p>  
+              <p class="textoWhite hostName col-12">{{getInformacion.data.property.host.first_name}} {{getInformacion.data.property.host.last_name}}</p>  
           </div>
           
         </div>
@@ -90,15 +90,15 @@ export default {
       return moment(String(date)).format('DD/MMM')
     },
 
-    // showLoading () {
-    //   this.$q.loading.show()
+    showLoading () {
+      this.$q.loading.show()
 
-    //   // hiding in 5s
-    //   this.timer = setTimeout(() => {
-    //     this.$q.loading.hide()
-    //     this.timer = void 0
-    //   }, 5000)
-    // }
+      // hiding in 5s
+      this.timer = setTimeout(() => {
+        this.$q.loading.hide()
+        this.timer = void 0
+      }, 5000)
+    }
 
 
   }

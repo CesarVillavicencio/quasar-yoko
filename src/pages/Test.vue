@@ -33,33 +33,16 @@
 
       <div class="row q-pt-lg " v-if="getInformacion.data">
 
-        <p v-if="this.ruta =='Wifi'" v-html="getInformacion.data.property.wifi_details">{{getInformacion.data.property.wifi_details}}</p>
+        <p v-if="this.ruta =='Wifi'" v-html="getInformacion.data.property.wifi_details"></p>
 
         <p v-if="this.ruta =='Check'" v-html="getInformacion.data.property.check_in_details"></p>
 
         <p v-if="this.ruta =='Adress'">{{getInformacion.data.property.address}}</p>
 
-        <p v-if="this.ruta =='Gaining access'">{{getInformacion.data.property.access_details}}</p>
+        <p v-if="this.ruta =='Gaining access'" v-html="getInformacion.data.property.access_details"> </p>
 
         <p v-if="this.ruta =='rules'" v-html="getInformacion.data.property.rules"></p>
       </div>
-
-      <!-- <div class="fixed-bottom sixe " >
-        <q-toolbar slot="footer" class="q-mt-xl bg-grey-3 shadow-2 rounded-borders centersize">
-
-          <q-btn flat round dense icon="o_thumb_up" class="q-mr-sm" to="/" />
-          <q-space />
-          <q-btn flat round dense icon="o_home" class="q-mr-sm active" to="/homeinformation" />
-          <q-space />
-          <q-btn flat round dense icon="o_store" class="q-mr-sm" />
-          <q-space />
-          <q-btn flat round dense icon="o_local_activity" class="q-mr-sm" />
-          <q-space />
-          <q-btn flat round dense icon="o_legend_toggle" class="q-mr-sm" />
-
-        </q-toolbar>
-      </div> -->
-
 
     </div>
   </div>

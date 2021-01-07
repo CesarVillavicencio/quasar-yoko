@@ -36,7 +36,7 @@
         </div>
       </div>
  
-      <router-link :to="'/'+ruta+'/tours/id'" v-for="k in 5">
+      <router-link :to="'/'+ruta+'/tours/id'" v-for="k in 10">
 
         <q-img class="q-mb-md q-mt-md vertical-top rounded-borders" 
         src="~assets/imgPrueba.jpg"  

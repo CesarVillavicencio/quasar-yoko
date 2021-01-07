@@ -1,6 +1,6 @@
-<template>
-  <div class="fixed-bottom sixe " >
-    <q-toolbar slot="footer" class="q-mt-xl bg-grey-3 shadow-2 rounded-borders centersize" :class="{ 'hidden': !showNavbar }">
+<template >
+<!--   <div class="fixed-bottom sixe">
+    <q-toolbar slot="footer" class="q-mt-xl bg-grey-3 shadow-2 rounded-borders centersize" :class="{ 'hidden': ocultar }">
 
       <q-btn flat round dense icon="o_thumb_up" class="q-mr-sm button" :to="'/'+ruta+'/recommendations'" :class="{'active':buttons.one}" @click="activar('one')"/>
       <q-space />
@@ -17,7 +17,31 @@
       <q-btn flat round dense icon="o_legend_toggle" class="q-mr-sm" :to="'/'+ruta+'/details'"/>
 
     </q-toolbar>
-  </div>
+
+    <q-scroll-observer @scroll="onScrollTwo"/>
+  </div>  -->
+
+  <q-footer class="sixe reveal" :class="{ 'hidden': ocultar }">
+    <q-toolbar class="q-mt-xl bg-grey-3 shadow-2 rounded-borders centersize" >
+      <!-- <q-toolbar-title></q-toolbar-title> -->
+        <q-btn flat round dense icon="o_thumb_up" class="q-mr-sm button" :to="'/'+ruta+'/recommendations'" :class="{'active':buttons.one}" @click="activar('one')"/>
+        <q-space />
+
+        <q-btn flat round dense icon="o_home" class="q-mr-sm" :to="'/'+ruta+'/homeinformation'" :class="{'active':buttons.two}" @click="activar('two')"/>
+        <q-space />
+
+        <q-btn flat round dense icon="o_store" class="q-mr-sm" :class="{'active':buttons.three}" @click="activar('three')" />
+        <q-space />
+
+        <q-btn flat round dense icon="o_local_activity" class="q-mr-sm" :class="{'active':buttons.four}" @click="activar('four')"/>
+        <q-space />
+
+        <q-btn flat round dense icon="o_legend_toggle" class="q-mr-sm" :to="'/'+ruta+'/details'"/>
+
+         <q-scroll-observer @scroll="onScrollTwo"/>
+    </q-toolbar>
+  </q-footer>
+
 </template>
 
 <script>
@@ -26,41 +50,28 @@ export default {
   name: 'pageTours',
   data () {
     return {
-      showNavbar: true,
-      lastScrollPosition: 0,
-      scrollValue: 0,
-      OFFSET:30,
-      fondo:false,
 
       buttons:{one:false, two:false, three:false, four:false, five:false},
 
       ruta: this.$route.params.id,
 
+      ocultar:false,
+
+    }
+  },
+  computed:{
+    check(){
+    
     }
   },
 
   mounted () {
     this.getRoute()
-    this.lastScrollPosition = window.pageYOffset
-    window.addEventListener('scroll', this.onScroll)
-  },
-
-  beforeDestroy () {
-    window.removeEventListener('scroll', this.onScroll)
+   
   },
 
   methods: {
-    onScroll (){
-      if (window.pageYOffset < 0) {
-        return
-      }
-      if (Math.abs(window.pageYOffset - this.lastScrollPosition) < OFFSET) {
-        return
-      }
-      this.showNavbar = window.pageYOffset < this.lastScrollPosition
-      this.lastScrollPosition = window.pageYOffset
-    },
-
+    
     activar(number){
 
       this.buttons = {one:false, two:false, three:false, four:false, five:false}
@@ -86,6 +97,14 @@ export default {
     getRoute(){
       if (this.$route.name == "recommendations") {this.buttons.one = true}
       else if (this.$route.name == "homeInformation") {this.buttons.two = true}
+      this.ocultar = false
+    },
+
+     onScrollTwo (info) {
+      if (info.direction == 'down') {this.ocultar=true}
+      else{
+        this.ocultar=false
+      }
     }
   }
 }
@@ -98,6 +117,9 @@ export default {
   margin-left: 40px;
   margin-right: 40px;
   margin-bottom: 15px;
+  /**/
+  background-color: transparent !important;
+  color:black;
 }
 
 .centersize{

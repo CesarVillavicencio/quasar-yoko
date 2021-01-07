@@ -1,8 +1,8 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh lpr lFf">    
   <!-- <q-layout view="lHr lpR fff"> -->
     <q-page-container>
-      <transition name="router-anim">
+      <transition name="fade">
 
         <router-view />       
         
@@ -82,3 +82,7 @@ components: { Menu },
   }
 }
 </script>
+
+<style>
+
+</style>

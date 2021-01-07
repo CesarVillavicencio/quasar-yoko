@@ -1,7 +1,8 @@
 <template>
   <div id="q-app"> 
-
+    <transition name="fade">
 	    <router-view />
+    </transition>
   </div>
 </template>
 
@@ -44,7 +45,7 @@ export default {
 <style>
 	/*@import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";*/
 
-.router-anim-enter-active {
+/*.router-anim-enter-active {
   animation: coming 1s;
   animation-delay: .5s;
   opacity: 0;
@@ -52,7 +53,7 @@ export default {
 
 .router-anim-leave-active {
   animation: going 1s;
-}
+}*/
 
 @keyframes going {
   from {
@@ -72,5 +73,19 @@ export default {
     transform: translateX(0);
     opacity: 1;
   }
+}
+
+/*fade animation*/
+.fade-enter-active, .fade-leave-active {
+  transition-property: opacity;
+  transition-duration: .5s;
+}
+
+.fade-enter-active {
+  transition-delay: .5s;
+}
+
+.fade-enter, .fade-leave-active {
+  opacity: 0
 }
 </style>
