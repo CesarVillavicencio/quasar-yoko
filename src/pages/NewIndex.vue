@@ -1,7 +1,7 @@
 <template>
-<q-page class="flex-center black">
+<q-page class="flex-center black" style="">
  <div class="q-pa-md flex flex-center" v-if="getInformacion.data">
-    <div style="max-width: 370px">
+    <div>
       <!-- <div class="q-pb-md row"> -->
 
         <div class="row" style="padding-top:7em;">
@@ -27,12 +27,13 @@
           <q-btn
             class="fecha flex flex-center"
             text-color="black"
-            icon="date_range"
             unelevated
             no-caps
-            @click="$router.push({ name: 'homeInformation', params: { id: ruta } })"
-            >         
-             {{transformFecha(getInformacion.data.check_in_date)}} -  {{transformFecha(getInformacion.data.check_out_date)}}
+            @click="$router.push({ name: 'homeInformation', params: { id: ruta } })">
+
+            <q-icon class="q-pr-xs" name="date_range" color="black" style="font-size: 24px; "></q-icon>
+
+            {{transformFecha(getInformacion.data.check_in_date)}} -  {{transformFecha(getInformacion.data.check_out_date)}}
           </q-btn>
         </div>
 

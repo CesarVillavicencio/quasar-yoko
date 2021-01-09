@@ -1,8 +1,8 @@
 <template>
-<q-page class="flex-center background">
+<q-page class="flex-center background" style="max-width: 370px">
 
   <div class="q-pa-md flex flex-center background">
-    <div style="max-width: 300px">
+    <div>
       <div class="q-pb-md row flex flex-center">
         <q-input rounded outlined :dense="true">
           <template v-slot:prepend>          
@@ -15,7 +15,7 @@
 
       <div class="row">
         <div class="col-12">
-          <p class="float-right"  @click="$router.back()">X</p>
+          <q-btn flat color="danger" label="X" class="float-right"  @click="$router.back()"/>
         </div>
       </div>
       <p class="text-weight-bold titulo">Hi, {{getInformacion.data.first_name}} {{getInformacion.data.last_name}}</p>
@@ -87,7 +87,7 @@
           <div class="col-2">
             
             <!-- <q-icon name="o_location_on" href="/" style="font-size: 40px; color:#fed502;"></q-icon> -->
-            <a href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796">
+            <a href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796" target="_blank">
               <q-img style="max-width: 60%;"
                 class =""
                 alt="googleMaps"
@@ -129,18 +129,26 @@
           <q-btn flat type="a" href="tel:54911-1234-5678" icon="o_phone"/>
         </div>
       </div>
+
       <q-separator inset />
 
       <div class="row q-pt-md">
-        <div class="col-2">
+        <div class="col-2 flex flex-center">
            <!-- <q-btn flat type="a" href="http://www.google.com/maps/place/49.46800006494457,17.11514008755796" icon="share" style="color:#fed502;" /> -->
-          <q-icon name="share" class="q-ml-md" style="font-size: 20px; color:#fed502;"></q-icon>
+           
+          <!-- <q-icon name="share" class="q-ml-md" style="font-size: 20px; color:#fed502;"></q-icon> -->
+          <q-btn flat dense size="xs" @click="share">
+            <q-icon name="share" class="" style="font-size: 20px; color:#fed502;"></q-icon>
+          </q-btn>
+
+          
+          
         </div>
 
         <div class="col-7">
-          <p class="title" @click="share()">Share your location</p>
-          <!-- <p class="text-weight-bold">911</p> -->
+          <q-btn dense size="md" flat align="between" class="btn-fixed-width" color="" label="Share your location" no-caps @click="share"/>
         </div>
+
         <div class="col-3">
           <img
             class ="yoko"
@@ -152,6 +160,11 @@
 
 
       </div>
+
+      <!-- <q-btn flat>
+        <q-icon name="share" class="" style="font-size: 20px; color:#fed502;"></q-icon>
+      </q-btn>
+      <q-btn flat align="between" class="btn-fixed-width" color="" label="Share your location" icon-color="yellow" no-caps/> -->
 
       <!-- <div class="col fixed-bottom sixe">
 

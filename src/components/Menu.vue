@@ -30,11 +30,11 @@
         <q-btn flat round dense icon="o_home" class="q-mr-sm" :to="'/'+ruta+'/homeinformation'" :class="{'active':buttons.two}" @click="activar('two')"/>
         <q-space />
 
-        <q-btn flat round dense icon="o_store" class="q-mr-sm" :class="{'active':buttons.three}" @click="activar('three')" />
-        <q-space />
+        <!-- <q-btn flat round dense icon="o_store" class="q-mr-sm" :class="{'active':buttons.three}" @click="activar('three')" /> -->
+        <!-- <q-space /> -->
 
-        <q-btn flat round dense icon="o_local_activity" class="q-mr-sm" :class="{'active':buttons.four}" @click="activar('four')"/>
-        <q-space />
+        <!-- <q-btn flat round dense icon="o_local_activity" class="q-mr-sm" :class="{'active':buttons.four}" @click="activar('four')"/> -->
+        <!-- <q-space /> -->
 
         <q-btn flat round dense icon="o_legend_toggle" class="q-mr-sm" :to="'/'+ruta+'/details'"/>
 

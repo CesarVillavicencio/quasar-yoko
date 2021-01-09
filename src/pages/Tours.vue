@@ -13,11 +13,20 @@
         <q-icon name="o_shopping_cart" class="q-ml-md" style="font-size: 25px"></q-icon>
       </div>
 
-      <p class="welcome" @click="$router.go(-1)"> 
+      <!-- <p class="welcome" @click="$router.go(-1)"> 
         <q-icon name="chevron_left" style="font-size: 25px; color:#fed502;"></q-icon>
          Attractions
-      </p>
-      <p class="text-weight-bold titulo">Tours</p>
+      </p> -->
+      <div class="row q-pt-lg">
+        <q-btn flat color="danger"  @click="$router.back()" no-caps>
+          <p class="txtBack col-12" >
+            <q-icon name="chevron_left" style="font-size: 25px; color:#fed502;"></q-icon>
+            Recommendations
+          </p>
+        </q-btn>
+
+        <p class="text-weight-bold titulo">Tours</p>
+      </div>
 
       <q-img
         class ="vertical-top rounded-borders"

@@ -8,11 +8,100 @@ const routes = [
     ]
   },
 
+  // {
+  //   path: '/:id/recommendations',    
+  //   component: () => import('layouts/MainLayout.vue'),
+  //   children: [
+  //     { path: '', name:'recommendations', component: () => import('pages/Recommendations.vue') }
+  //   ]
+  // },
+
+  // {
+  //   path: '/:id/homeInformation',
+  //   component: () => import('layouts/MainLayout.vue'),
+  //   children: [
+  //     { path: '', name:'homeInformation', component: () => import('pages/HomeInformation.vue') }
+  //   ]
+  // },
+
+  // {
+  //   path: '/:id/houseRules',
+  //   component: () => import('layouts/MainLayout.vue'),
+  //   children: [
+  //     { path: '', name:'houseRules', component: () => import('pages/HouseRules.vue') }
+  //   ]
+  // },
+
+  // {
+  //   path: '/:id/attractions',
+  //   component: () => import('layouts/MainLayout.vue'),
+  //   children: [
+  //     { path: '', name:'attractions', component: () => import('pages/Attractions.vue') }
+  //   ]
+  // },
+
+  // {
+  //   path: '/:id/tours',
+  //   component: () => import('layouts/MainLayout.vue'),
+  //   children: [
+  //     { path: '', name:"tours", component: () => import('pages/Tours.vue') }
+  //   ]
+  // },
+
+  // {
+  //   path: '/:id/details',
+  //   component: () => import('layouts/MainIndex.vue'),
+  //   children: [
+  //     { path: '', name:"details", component: () => import('pages/Details.vue') }
+  //   ]
+  // },
+
+  // {
+  //   path: '/:id/homeInformation/:title',
+  //   component: () => import('layouts/MainLayout.vue'),
+  //   children: [
+  //     { path: '', component: () => import('pages/Test.vue') }
+  //   ]
+  // },
+
+  // {
+  //   path: '/:id/tours/id',
+  //   component: () => import('layouts/MainLayout.vue'),
+  //   children: [
+  //     { path: '', name:'tour', component: () => import('pages/Tour.vue') }
+  //   ]
+  // },
+
+  // {
+  //   path: '/:id/recommendations/party',
+  //   component: () => import('layouts/MainLayout.vue'),
+  //   children: [
+  //     { path: '', component: () => import('pages/Test.vue') }
+  //   ]
+  // },
+
+  // {
+  //   path: '/:id/prueba',
+  //   component: () => import('layouts/MainLayout.vue'),
+  //   children: [
+  //     { path: '', component: () => import('pages/prueba.vue') }
+  //   ]
+  // },
+
+  // {
+  //   path: '/:id/nuevo',
+  //   component: () => import('layouts/MainLayout.vue'),
+  //   children: [
+  //     { path: '', component: () => import('pages/mobile/InformationDetails.vue') }
+  //   ]
+  // },
+  // Nuevas
+
   {
     path: '/:id/recommendations',    
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', name:'recommendations', component: () => import('pages/Recommendations.vue') }
+      { path: '', name:'recommendations', component: () => import('pages/mobile/Recommendations.vue') }
     ]
   },
 
@@ -20,15 +109,15 @@ const routes = [
     path: '/:id/homeInformation',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', name:'homeInformation', component: () => import('pages/HomeInformation.vue') }
+      { path: '', name:'homeInformation', component: () => import('pages/mobile/HomeInformation.vue') }
     ]
   },
 
   {
-    path: '/:id/houseRules',
+    path: '/:id/homeInformation/:title',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', name:'houseRules', component: () => import('pages/HouseRules.vue') }
+      { path: '', component: () => import('pages/mobile/InformationDetails.vue') }
     ]
   },
 
@@ -36,7 +125,7 @@ const routes = [
     path: '/:id/attractions',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', name:'attractions', component: () => import('pages/Attractions.vue') }
+      { path: '', name:'attractions', component: () => import('pages/mobile/Attractions.vue') }
     ]
   },
 
@@ -44,7 +133,7 @@ const routes = [
     path: '/:id/tours',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', name:"tours", component: () => import('pages/Tours.vue') }
+      { path: '', name:"tours", component: () => import('pages/mobile/Tours.vue') }
     ]
   },
 
@@ -57,14 +146,6 @@ const routes = [
   },
 
   {
-    path: '/:id/homeInformation/:title',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/Test.vue') }
-    ]
-  },
-
-  {
     path: '/:id/tours/id',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -73,26 +154,18 @@ const routes = [
   },
 
   {
-    path: '/:id/recommendations/party',
+    path: '/:id/store',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Test.vue') }
+      { path: '', component: () => import('pages/Store.vue') }
     ]
   },
 
   {
-    path: '/:id/prueba',
+    path: '/:id/nuevaInformation',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/prueba.vue') }
-    ]
-  },
-
-  {
-    path: '/:id/nuevo',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: '', component: () => import('pages/nuevo.vue') }
+      { path: '', component: () => import('pages/mobile/HomeInformation.vue') }
     ]
   },
 

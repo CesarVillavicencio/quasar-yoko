@@ -13,11 +13,19 @@
          <q-icon name="o_shopping_cart" class="q-ml-md" style="font-size: 25px"></q-icon>
       </div>
 
-      <p class="welcome" @click="$router.back()"> 
+      <!-- <p class="welcome" @click="$router.back()"> 
         <q-icon name="chevron_left" style="font-size: 25px; color:#fed502;"></q-icon>
         Back
-      </p>
+      </p> -->
 
+      <q-btn flat color="danger"  @click="$router.back()" no-caps>
+        <p class="txtBack col-12" >
+        <q-icon name="chevron_left" style="font-size: 25px; color:#fed502;"></q-icon>
+        Back
+        </p>
+      </q-btn>
+
+      <p class="flex flex-center titulo">Dream House</p>
       <q-carousel
         animated
         v-model="slide"
@@ -59,9 +67,9 @@
         <!-- <q-btn class="button" color="black" label="Reservacion" />   -->
       </div>
       
-      <div>
+      <!-- <div>
         GPS position: <strong>{{ position }} - {{center.lat}} , {{center.lng}}</strong>
-      </div>      
+      </div>    -->   
 
     </div>
   </div>
@@ -160,6 +168,26 @@ export default {
 
 .q-carousel{
   height: 300px !important;
+}
+
+.titulo{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+
+}
+
+.txtBack{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
 </style>
