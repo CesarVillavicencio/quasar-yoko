@@ -7,7 +7,7 @@
         <div class="row" style="padding-top:7em;">
           <div class="col-2">
             <q-avatar size="70px">
-              <img class="imgPrincipal float-left" :src="getInformacion.data.property.cover">
+              <img class="imgPrincipal float-left" :src="getInformacion.data.property.host.photo">
             </q-avatar> 
           </div>
           <div class="col-10 q-pl-lg q-pt-xs" >

@@ -21,7 +21,7 @@
 
   <!-- mensajes de bienvenida -->
   <div class="row q-pt-lg">
-    <p class="welcome col-12">Hi, Ana Maria Castrillon Rejon</p> 
+    <p class="welcome col-12">Hi, {{getInformacion.data.first_name}} {{getInformacion.data.last_name}}</p> 
     <p class="text-weight-bold titulo">Recommendations</p>
   </div>
   <!--  -->

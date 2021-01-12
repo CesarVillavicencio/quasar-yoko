@@ -21,7 +21,7 @@
 
   <!-- mensajes de bienvenida -->
   <div class="row q-pt-lg">
-    <p class="welcome col-12">Hi, Ana Maria Castrillon Rejon</p> 
+    <p class="welcome col-12">Hi, {{getInformacion.data.first_name}} {{getInformacion.data.last_name}}</p> 
     <p class="text-weight-bold titulo col-12">Home Information</p>
   </div>
   <!--  -->
@@ -35,100 +35,92 @@
 
 
   <!-- Menu -->
-  <div class="q-py-lg q-gutter-md justify-center text-center">
+  <div class="q-py-lg q-gutter-sd justify-center text-center">
 
-    <div class="row q-px-md">
+    <div class="row q-px-lg">
 
-      <div class="col">
+      <div class="col-4" v-if="getInformacion.data.property.check_in_details">
         <div class="negro">
           <q-btn class="buttons"  icon="add_business" :to="'/'+idReserva+'/homeInformation/check'" />
           <p class="menu">Check in time</p>  
         </div>
       </div>
 
-      <div class="col">
+      <div class="col-4" v-if="getInformacion.data.property.access_details">
         <div class="negro">
           <q-btn class="buttons"  icon="vpn_key" :to="'/'+idReserva+'/homeInformation/Gaining'"/>
           <p class="menu">Gaining Acess</p>  
         </div>
       </div>
 
-      <div class="col">
+      <div class="col-4" v-if="getInformacion.data.property.wifi_details">
         <div class="negro">
           <q-btn class="buttons"  icon="wifi" :to="'/'+idReserva+'/homeInformation/wifi'"/>
           <p class="menu">Wifi Access</p>  
         </div>
       </div>
         
-    </div>
+    <!-- </div>
 
-    <div class="row q-px-md">
+    <div class="row q-px-md"> -->
 
-      <div class="col">
+      <div class="col-4" v-if="getInformacion.data.property.adress">
         <div class="negro">
           <q-btn class="buttons"  icon="location_on" :to="'/'+idReserva+'/homeInformation/adress'"/>
           <p class="menu">Adress</p>  
         </div>
       </div>
 
-      <div class="col">
+      <!-- <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="emoji_transportation" />
           <p class="menu">Directions</p>  
         </div>
       </div>
 
-      <div class="col">
+      <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="map" />
           <p class="menu">Transportation </p>  
         </div>
       </div>
-      
-    </div>
 
-    <div class="row q-px-md">
-
-      <div class="col">
+      <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="local_parking"/>
           <p class="menu">Parking</p>  
         </div>
       </div>
 
-      <div class="col">
+      <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="o_wb_sunny" />
           <p class="menu">Weather</p>  
         </div>
       </div>
 
-      <div class="col">
+      <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="donut_large"/>
           <p class="menu">At the corner </p>  
         </div>
       </div>
-      
-    </div>
 
-    <div class="row q-px-md">
-
-      <div class="col">
+      <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="single_bed"/>
           <p class="menu">Ammenities</p>  
         </div>
       </div>
 
-      <div class="col">
+      <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="dashboard" />
           <p class="menu">Tips</p>  
         </div>
-      </div>
+      </div> -->
 
-      <div class="col">
+      <div class="col-4" v-if="getInformacion.data.property.rules">
         <div class="negro">
           <q-btn class="buttons"  icon="list_alt"  :to="'/'+idReserva+'/homeInformation/rules'"/>
           <p class="menu">House rules</p>  

@@ -67,7 +67,6 @@ export default {
   methods:{
     goToRoute(){
       if (this.text != "") {
-        alert("hola")
         this.$router.push(this.text);
       }
       else {
