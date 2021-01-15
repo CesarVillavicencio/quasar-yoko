@@ -46,81 +46,73 @@
   <!--  -->
 
   <!-- Menu -->
-  <div class="q-py-lg q-gutter-md justify-center text-center">
+  <div class="q-py-lg q-gutter-sd justify-center text-center">
 
-    <div class="row q-px-md">
+    <div class="row q-px-lg">
 
-      <div class="col">
+      <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="location_on" :to="'/'+ruta+'/tours'" />
           <p class="menu">Atractions</p>  
         </div>
       </div>
 
-      <div class="col">
+      <div class="col-4">
         <div class="negro">
-          <q-btn class="buttons"  icon="restaurant_menu"/>
+          <q-btn class="buttons"  icon="restaurant_menu" :to="'/'+ruta+'/meals'" />
           <p class="menu">What to eat</p>  
         </div>
       </div>
 
-      <div class="col">
+      <!-- <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="local_bar" />
           <p class="menu">Party </p>  
         </div>
       </div>
         
-    </div>
-
-    <div class="row q-px-md">
-
-      <div class="col">
+      <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="shopping_bag" />
           <p class="menu">Shopping</p>  
         </div>
       </div>
 
-      <div class="col">
+      <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="add_box" />
           <p class="menu">Services</p>  
         </div>
       </div>
 
-      <div class="col">
+      <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="local_taxi" />
           <p class="menu">Transport </p>  
         </div>
       </div>
-      
-    </div>
 
-    <div class="row q-px-md">
-
-      <div class="col">
+      <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="map"/>
           <p class="menu">Transport</p>  
         </div>
       </div>
 
-      <div class="col">
+      <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="dashboard" />
           <p class="menu">Specialized <br> store</p>  
         </div>
       </div>
 
-      <div class="col">
+      <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="notifications_active"/>
           <p class="menu">Emergency </p>  
         </div>
       </div>
-      
+       -->
     </div>
 
   </div>
@@ -142,11 +134,12 @@ export default {
       name: 'App',
       datos:[],
       ruta: this.$route.params.id,
+      productos:[]
     }    
   },
 
   mounted(){
-    this.getFromVuex();
+    this.getFromVuex(), this.loadProductos();
   },
 
   computed: {
@@ -174,7 +167,23 @@ export default {
     //     this.$q.loading.hide()
     //     this.timer = void 0
     //   }, 5000)
-    // }
+    // },
+
+      loadProductos(){
+      this.$axios.get('https://panel.yokoportal.com/api/v1/products')
+      .then((response) => {
+        this.productos = response.data
+        console.log(this.productos);
+        })
+        .catch(() => {
+          this.$q.notify({
+            color: 'negative',
+            position: 'top',
+            message: 'Usando notificaciones',
+            icon: 'report_problem'
+          })
+        })
+      }
 
 
   }

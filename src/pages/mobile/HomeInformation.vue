@@ -41,7 +41,7 @@
 
       <div class="col-4" v-if="getInformacion.data.property.check_in_details">
         <div class="negro">
-          <q-btn class="buttons"  icon="add_business" :to="'/'+idReserva+'/homeInformation/check'" />
+          <q-btn class="buttons"  icon="add_business" :to="'/'+idReserva+'/homeInformation/Check'" />
           <p class="menu">Check in time</p>  
         </div>
       </div>
@@ -55,7 +55,7 @@
 
       <div class="col-4" v-if="getInformacion.data.property.wifi_details">
         <div class="negro">
-          <q-btn class="buttons"  icon="wifi" :to="'/'+idReserva+'/homeInformation/wifi'"/>
+          <q-btn class="buttons"  icon="wifi" :to="'/'+idReserva+'/homeInformation/Wifi'"/>
           <p class="menu">Wifi Access</p>  
         </div>
       </div>
@@ -64,10 +64,10 @@
 
     <div class="row q-px-md"> -->
 
-      <div class="col-4" v-if="getInformacion.data.property.adress">
+      <div class="col-4" v-if="getInformacion.data.property.address">
         <div class="negro">
-          <q-btn class="buttons"  icon="location_on" :to="'/'+idReserva+'/homeInformation/adress'"/>
-          <p class="menu">Adress</p>  
+          <q-btn class="buttons"  icon="location_on" :to="'/'+idReserva+'/homeInformation/Address'"/>
+          <p class="menu">Address</p>  
         </div>
       </div>
 
@@ -122,7 +122,7 @@
 
       <div class="col-4" v-if="getInformacion.data.property.rules">
         <div class="negro">
-          <q-btn class="buttons"  icon="list_alt"  :to="'/'+idReserva+'/homeInformation/rules'"/>
+          <q-btn class="buttons"  icon="list_alt"  :to="'/'+idReserva+'/homeInformation/Rules'"/>
           <p class="menu">House rules</p>  
         </div>
       </div>
@@ -158,6 +158,7 @@ export default {
   computed: {
     ...mapGetters('datos', [
             'getInformacion',
+            'getProrudctos'
         ]),
     
   },
@@ -167,6 +168,7 @@ export default {
       this.$q.loading.show()
       this.$store.dispatch('datos/getDatos', this.idReserva);
       this.$store.getters['datos/getInformacion'];
+      this.$store.getters['datos/getProrudctos'];
       this.datos = this.getInformacion;
       console.log(this.datos);
       this.$q.loading.hide()

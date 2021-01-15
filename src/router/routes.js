@@ -169,6 +169,22 @@ const routes = [
     ]
   },
 
+  {
+    path: '/:id/meals',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '',  component: () => import('pages/mobile/Meals.vue') }
+    ]
+  },
+
+  {
+    path: '/:id/meals/:idMeal',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', name:'Meal', component: () => import('pages/mobile/Meal.vue') }
+    ]
+  },
+
   // Always leave this as last one,
   // but you can also remove it
   {
