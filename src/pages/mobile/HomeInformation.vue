@@ -1,8 +1,8 @@
 <template>
 <div class="flex flex-center">
-<q-page class="flex-center q-px-lg" style="max-width: 370px">
+<q-page class="flex-center q-px-lg" style="width: 370px">
   <!-- buscador -->
-  <div class="row flex-center q-pt-md">
+<!--   <div class="row flex-center q-pt-md">
     <div class="col-10">
       <q-input class="ft" rounded outlined :dense="true">
         <template v-slot:prepend>          
@@ -16,7 +16,7 @@
       <q-icon name="o_shopping_cart" class="q-ml-md" style="font-size: 25px"></q-icon>
     </div>
 
-  </div>
+  </div> -->
   <!--  -->
 
   <!-- mensajes de bienvenida -->

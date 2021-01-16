@@ -3,20 +3,24 @@
 
   <div class="q-pa-md flex flex-center background">
     <div style="max-width: 300px">
-      <div class="q-pb-md row flex flex-center">
-        <q-input rounded outlined :dense="true">
-          <template v-slot:prepend>          
-            <q-icon name="search"></q-icon>
-          </template>
+      <!-- buscador -->
+      <!-- <div class="row flex-center q-pt-md">
+        <div class="col-10">
+          <q-input class="ft" rounded outlined :dense="true">
+            <template v-slot:prepend>          
+              <q-icon name="search"></q-icon>
+            </template>
 
-        </q-input>
-        <q-icon name="o_shopping_cart" class="q-ml-md" style="font-size: 25px"></q-icon>
-      </div>
+          </q-input>        
+        </div>
 
-      <!-- <p class="welcome" @click="$router.go(-1)"> 
-        <q-icon name="chevron_left" style="font-size: 25px; color:#fed502;"></q-icon>
-         Attractions
-      </p> -->
+        <div class="col-2">
+          <q-icon name="o_shopping_cart" class="q-ml-md" style="font-size: 25px"></q-icon>
+        </div>
+
+      </div> -->
+      <!-- buscador -->
+
       <div class="row q-pt-lg">
         <q-btn flat color="danger"  @click="$router.back()" no-caps>
           <p class="txtBack col-12" >
@@ -28,12 +32,12 @@
         <p class="text-weight-bold titulo col-12">Meals</p>
       </div>
 
-      <q-img
+      <!-- <q-img
         class ="vertical-top rounded-borders"
         src="~assets/900x300.png"
         
         contain>
-      </q-img>
+      </q-img> -->
 
       <div class="row q-pt-md">
         <div class="col-6 q-mr-xs" >
@@ -52,7 +56,7 @@
           src="~assets/imgPrueba.jpg"  
           >
           <div class="absolute-bottom">
-            <p class="imgTitle" >{{c.name}} <q-icon  class="text-yellow" v-for="n in 5" name="star"/></p>
+            <p class="imgTitle" >{{c.name}}</p>
             <p class="imgSubtitle">{{c.schedule}}</p>
           </div>
         </q-img>

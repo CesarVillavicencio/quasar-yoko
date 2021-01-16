@@ -3,15 +3,23 @@
 
   <div class="q-pa-md flex flex-center background">
     <div style="max-width: 300px">
-      <div class="q-pb-md row flex flex-center">
-        <q-input rounded outlined :dense="true">
-          <template v-slot:prepend>          
-            <q-icon name="search"></q-icon>
-          </template>
+      <!-- buscador -->
+   <!--    <div class="row flex-center q-pt-md">
+        <div class="col-10">
+          <q-input class="ft" rounded outlined :dense="true">
+            <template v-slot:prepend>          
+              <q-icon name="search"></q-icon>
+            </template>
 
-        </q-input>
-         <q-icon name="o_shopping_cart" class="q-ml-md" style="font-size: 25px"></q-icon>
-      </div>
+          </q-input>        
+        </div>
+
+        <div class="col-2">
+          <q-icon name="o_shopping_cart" class="q-ml-md" style="font-size: 25px"></q-icon>
+        </div>
+
+      </div> -->
+      <!-- Buscador -->
 
       <q-btn flat color="danger"  @click="$router.back()" no-caps>
         <p class="txtBack col-12" >

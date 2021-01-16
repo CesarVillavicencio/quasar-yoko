@@ -1,8 +1,8 @@
 <template>
 <div class="flex flex-center">
-<q-page class="flex-center q-px-lg" style="max-width: 370px">
+<q-page class="flex-center q-px-lg" style="width: 370px">
   <!-- buscador -->
-  <div class="row flex-center q-pt-md">
+<!--   <div class="row flex-center q-pt-md">
     <div class="col-10">
       <q-input class="ft" rounded outlined :dense="true">
         <template v-slot:prepend>          
@@ -16,7 +16,7 @@
       <q-icon name="o_shopping_cart" class="q-ml-md" style="font-size: 25px"></q-icon>
     </div>
 
-  </div>
+  </div> -->
   <!--  -->
 
   <!-- mensajes de bienvenida -->
@@ -50,6 +50,13 @@
 
     <div class="row q-px-lg">
 
+<!--       <div class="col-4" v-for="c in categorias.data">
+        <div class="negro">
+          <q-btn class="buttons"  :icon="c.icon" :to="'/'+ruta+'/'+c.name+''" />
+          <p class="menu">{{c.name}}</p>  
+        </div>
+      </div>   -->
+
       <div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="location_on" :to="'/'+ruta+'/tours'" />
@@ -62,9 +69,9 @@
           <q-btn class="buttons"  icon="restaurant_menu" :to="'/'+ruta+'/meals'" />
           <p class="menu">What to eat</p>  
         </div>
-      </div>
+      </div>      
 
-      <!-- <div class="col-4">
+       <!--<div class="col-4">
         <div class="negro">
           <q-btn class="buttons"  icon="local_bar" />
           <p class="menu">Party </p>  
@@ -134,12 +141,13 @@ export default {
       name: 'App',
       datos:[],
       ruta: this.$route.params.id,
-      productos:[]
+      productos:[],
+      categorias:[]
     }    
   },
 
   mounted(){
-    this.getFromVuex(), this.loadProductos();
+    this.getFromVuex(), this.loadProductos(), this.getCategorias();
   },
 
   computed: {
@@ -183,7 +191,24 @@ export default {
             icon: 'report_problem'
           })
         })
-      }
+      },
+
+      getCategorias(){
+      this.$axios.get('https://panel.yokoportal.com/api/v1/categories')
+      .then((response) => {
+        this.categorias = response.data
+        // console.log(this.categorias);
+        })
+        .catch(() => {
+          this.$q.notify({
+            color: 'negative',
+            position: 'top',
+            message: 'Usando notificaciones',
+            icon: 'report_problem'
+          })
+        })
+      
+    },
 
 
   }
