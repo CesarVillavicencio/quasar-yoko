@@ -27,10 +27,10 @@
   <!--  -->
 
   <!-- Publicidad -->
-  <!-- <q-img
+  <q-img v-if="bannerData"
     class ="publicidad"
-    src="~assets/900x300.png">
-  </q-img> -->
+    :src="bannerData[0].image">
+  </q-img>
   <!--  -->
 
 
@@ -148,11 +148,12 @@ export default {
       name: 'App',
       datos:[],
       idReserva: this.$route.params.id,
+      bannerData:''
     }    
   },
 
   mounted(){
-    this.getFromVuex();
+    this.getFromVuex(), this.getBanner();
   },
 
   computed: {
@@ -173,6 +174,21 @@ export default {
       console.log(this.datos);
       this.$q.loading.hide()
     },
+
+    getBanner(){
+      this.$axios.get('https://panel.yokoportal.com/api/v1/banners')
+      .then((response) => {
+        this.bannerData = response.data.data
+      })
+      .catch(() => {
+        this.$q.notify({
+          color: 'negative',
+          position: 'top',
+          message: 'Loading failed',
+          icon: 'report_problem'
+        })
+      })
+    }
 
     // showLoading () {
     //   this.$q.loading.show()

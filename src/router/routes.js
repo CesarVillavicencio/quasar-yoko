@@ -170,7 +170,7 @@ const routes = [
   },
 
   {
-    path: '/:id/meals',
+    path: '/:id/recommendations/:idCategoria',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '',  component: () => import('pages/mobile/Meals.vue') }

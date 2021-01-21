@@ -50,16 +50,16 @@
 
     <div class="row q-px-lg">
 
-<!--       <div class="col-4" v-for="c in categorias.data">
+      <div class="col-4" v-for="c in categorias.data">
         <div class="negro">
-          <q-btn class="buttons"  :icon="c.icon" :to="'/'+ruta+'/'+c.name+''" />
+          <q-btn class="buttons"  :icon="c.icon" :to="'/'+ruta+'/recommendations/'+c.id"/>
           <p class="menu">{{c.name}}</p>  
         </div>
-      </div>   -->
+      </div>  
 
-      <div class="col-4">
+     <!--  <div class="col-4">
         <div class="negro">
-          <q-btn class="buttons"  icon="location_on" :to="'/'+ruta+'/tours'" />
+          <q-btn class="buttons"  icon="location_on" :to="'/'+ruta+'/recommendations/tours'" />
           <p class="menu">Atractions</p>  
         </div>
       </div>
@@ -69,7 +69,7 @@
           <q-btn class="buttons"  icon="restaurant_menu" :to="'/'+ruta+'/meals'" />
           <p class="menu">What to eat</p>  
         </div>
-      </div>      
+      </div>       -->
 
        <!--<div class="col-4">
         <div class="negro">
@@ -209,6 +209,9 @@ export default {
         })
       
     },
+    goRoute(id){
+      this.$router.push(id);
+    }
 
 
   }

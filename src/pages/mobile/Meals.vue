@@ -2,7 +2,7 @@
 <q-page class="flex-center background">
 
   <div class="q-pa-md flex flex-center background">
-    <div style="max-width: 300px">
+    <div style="max-width: 370px">
       <!-- buscador -->
       <!-- <div class="row flex-center q-pt-md">
         <div class="col-10">
@@ -32,20 +32,23 @@
         <p class="text-weight-bold titulo col-12">Meals</p>
       </div>
 
-      <!-- <q-img
-        class ="vertical-top rounded-borders"
-        src="~assets/900x300.png"
-        
-        contain>
-      </q-img> -->
+        <a :href="banner[0].target_link" target="_blank">
+          <q-img v-if="banner[0]"
+          class ="vertical-top rounded-borders"
+          :src="banner[0].image"
+          :to="banner[0].target_link"
+          
+          contain>
+          </q-img>
+        </a>      
 
       <div class="row q-pt-md">
         <div class="col-6 q-mr-xs" >
-          <q-select outlined v-model="model" :options="options" label="Rate" dense/>
+          <q-select outlined v-model="model" :options="categorias" label="Category" dense/>
         </div>
 
         <div class="col-5 q-ml-xs">
-          <q-select outlined v-model="model" :options="options" label="Rate" dense/>
+          <q-select outlined v-model="modelo" :options="options" label="Provider" dense/>
         </div>
       </div>
       
@@ -78,9 +81,11 @@ export default {
   name: 'Meals',
   data () {
     return {
-      model: null,
+      model: '',
+      modelo:'',
       categorias:[],
       productos:[],
+      banner:"",
 
       options: [
         {
@@ -120,7 +125,7 @@ export default {
   },
 
   mounted () {
-    this.getCategorias(), this.getProductos();
+    this.getCategorias(), this.getProductos(), this.getBannerXid();
   },
 
   beforeDestroy () {
@@ -130,7 +135,7 @@ export default {
     getCategorias(){
       this.$axios.get('https://panel.yokoportal.com/api/v1/categories')
       .then((response) => {
-        this.categorias = response.data
+        this.categorias = response.data.data
         // console.log(this.categorias);
         })
         .catch(() => {
@@ -148,6 +153,23 @@ export default {
       this.$axios.get('https://panel.yokoportal.com/api/v1/products')
       .then((response) => {
         this.productos = response.data
+        // console.log(this.categorias);
+        })
+        .catch(() => {
+          this.$q.notify({
+            color: 'negative',
+            position: 'top',
+            message: 'Usando notificaciones',
+            icon: 'report_problem'
+          })
+        })
+    },
+
+    getBannerXid(){
+      var idCategoria = this.$route.params.idCategoria;
+      this.$axios.get('https://panel.yokoportal.com/api/v1/banners/'+idCategoria)
+      .then((response) => {
+        this.banner = response.data.data
         // console.log(this.categorias);
         })
         .catch(() => {
