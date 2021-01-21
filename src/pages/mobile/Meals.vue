@@ -1,7 +1,8 @@
 <template>
-<q-page class="flex-center background">
+<div class="flex flex-center">
+<q-page class="flex-center q-px-lg" style="width: 370px">
 
-  <div class="q-pa-md flex flex-center background">
+  <div class="background">
     <div style="max-width: 370px">
       <!-- buscador -->
       <!-- <div class="row flex-center q-pt-md">
@@ -72,6 +73,8 @@
   </div>
 
 </q-page>
+</div>
+
   
 </template>
 
@@ -186,14 +189,6 @@ export default {
 </script>
 
 <style>
-.negro{
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.menu{
-  font-size: 10px;
-}
 .welcome{
   color: #a9a9a9;
   font-size: 10px;
@@ -201,13 +196,6 @@ export default {
 }
 .background{
   background-color: #fbfbfb;
-}
-
-.buttons{
-  /*color:white;*/
-  background-color: #fed502;
-  height: 50px;
-  border-radius: 18px;
 }
 
 .titulo{
