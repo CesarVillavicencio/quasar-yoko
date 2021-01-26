@@ -33,8 +33,8 @@
         <p class="text-weight-bold titulo col-12">Meals</p>
       </div>
 
-        <a :href="banner[0].target_link" target="_blank">
-          <q-img v-if="banner[0]"
+        <a :href="banner[0].target_link" target="_blank" v-if="banner[0]">
+          <q-img
           class ="vertical-top rounded-borders"
           :src="banner[0].image"
           :to="banner[0].target_link"
@@ -45,11 +45,12 @@
 
       <div class="row q-pt-md">
         <div class="col-6 q-mr-xs" >
-          <q-select outlined v-model="model" :options="categorias" label="Category" dense/>
+          <q-select outlined v-model="model" :options="options" label="Category" 
+          @input="getProductos()" dense/>
         </div>
 
         <div class="col-5 q-ml-xs">
-          <q-select outlined v-model="modelo" :options="options" label="Provider" dense/>
+          <!-- <q-select outlined v-model="modelo" :options="options" label="Provider" dense/> -->
         </div>
       </div>
       
@@ -92,35 +93,16 @@ export default {
 
       options: [
         {
-          label: 'Google',
-          value: 'Google',
+          label: 'Mexicana',
+          value: '1',
           description: 'Search engine',
           icon: 'mail'
         },
         {
-          label: 'Facebook',
-          value: 'Facebook',
+          label: 'Japonesa',
+          value: '2',
           description: 'Social media',
           icon: 'bluetooth'
-        },
-        {
-          label: 'Twitter',
-          value: 'Twitter',
-          description: 'Quick updates',
-          icon: 'map'
-        },
-        {
-          label: 'Apple',
-          value: 'Apple',
-          description: 'iStuff',
-          icon: 'golf_course'
-        },
-        {
-          label: 'Oracle',
-          value: 'Oracle',
-          disable: true,
-          description: 'Databases',
-          icon: 'casino'
         }
       ],
       ruta: this.$route.params.id,
@@ -153,9 +135,10 @@ export default {
     },
 
     getProductos(){
-      this.$axios.get('https://panel.yokoportal.com/api/v1/products')
+      var idCat = this.model.value;
+      this.$axios.get('https://panel.yokoportal.com/api/v1/productos', {params:{idCategoria:idCat}})
       .then((response) => {
-        this.productos = response.data
+        this.productos = response
         // console.log(this.categorias);
         })
         .catch(() => {
@@ -183,6 +166,10 @@ export default {
             icon: 'report_problem'
           })
         })
+    },
+
+    prueba(){
+      alert("hola");
     }
   }
 }

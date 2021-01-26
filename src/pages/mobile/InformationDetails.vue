@@ -44,13 +44,13 @@
   <!-- contenido -->
   <div class="row q-pt-lg " v-if="getInformacion.data">
 
-    <p v-if="this.ruta =='Wifi'" v-html="getInformacion.data.property.wifi_details"></p>
+    <p v-if="this.ruta =='Wifi Access'" v-html="getInformacion.data.property.wifi_details"></p>
 
     <p v-if="this.ruta =='Check'" v-html="getInformacion.data.property.check_in_details"></p>
 
     <p v-if="this.ruta =='Address'" v-html="getInformacion.data.property.address"></p>
 
-    <p v-if="this.ruta =='Gaining'" v-html="getInformacion.data.property.access_details"> </p>
+    <p v-if="this.ruta =='Gaining Access'" v-html="getInformacion.data.property.access_details"> </p>
 
     <p v-if="this.ruta =='Rules'" v-html="getInformacion.data.property.rules"></p>
   </div>

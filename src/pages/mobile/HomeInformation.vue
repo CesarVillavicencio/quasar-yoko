@@ -42,20 +42,20 @@
       <div class="col-4" v-if="getInformacion.data.property.check_in_details">
         <div class="negro">
           <q-btn class="buttons"  icon="add_business" :to="'/'+idReserva+'/homeInformation/Check'" />
-          <p class="menu">Check in time</p>  
+          <p class="menu">Check In/Out</p>  
         </div>
       </div>
 
       <div class="col-4" v-if="getInformacion.data.property.access_details">
         <div class="negro">
-          <q-btn class="buttons"  icon="vpn_key" :to="'/'+idReserva+'/homeInformation/Gaining'"/>
+          <q-btn class="buttons"  icon="vpn_key" :to="'/'+idReserva+'/homeInformation/Gaining Access'"/>
           <p class="menu">Gaining Acess</p>  
         </div>
       </div>
 
       <div class="col-4" v-if="getInformacion.data.property.wifi_details">
         <div class="negro">
-          <q-btn class="buttons"  icon="wifi" :to="'/'+idReserva+'/homeInformation/Wifi'"/>
+          <q-btn class="buttons"  icon="wifi" :to="'/'+idReserva+'/homeInformation/Wifi Access'"/>
           <p class="menu">Wifi Access</p>  
         </div>
       </div>
