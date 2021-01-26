@@ -73,9 +73,11 @@
             <!-- <q-icon name="o_facebook" class="q-mr-md" style="font-size: 25px"></q-icon>
             <q-icon name="o_phone" href="tel:2125551212" class="q-ml-md q-mr-md" style="font-size: 25px"></q-icon>
             <q-icon name="o_mail" class="q-ml-md q-mr-md" style="font-size: 25px"></q-icon> -->
-            <q-btn flat type="a" href="facebook.com" icon="o_facebook"/>
-            <q-btn flat type="a" href="tel:54911-1234-5678" icon="o_phone"/>
-            <q-btn flat type="a" :href="`mailto:${getInformacion.data.property.host.email}`" icon="o_mail"/>
+            <q-btn flat type="a" :href="`https://wa.me/52${getInformacion.data.phone}?text=Hi`">
+               <img src="~assets/whatsapp.png" />
+            </q-btn>
+            <q-btn flat type="a" :href="`tel:${getInformacion.data.phone}`" icon="o_phone"/>
+            <q-btn flat type="a" :href="`mailto:${getInformacion.data.email}`" icon="o_mail"/>
           </p>
         </div>
       </div>
