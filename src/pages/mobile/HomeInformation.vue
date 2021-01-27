@@ -171,7 +171,7 @@ export default {
       this.$store.getters['datos/getInformacion'];
       this.$store.getters['datos/getProrudctos'];
       this.datos = this.getInformacion;
-      console.log(this.datos);
+      // console.log(this.datos);
       this.$q.loading.hide()
     },
 

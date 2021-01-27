@@ -114,7 +114,7 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: `Yoko PWA`,
+        name: `Yoko`,
         short_name: `Yoko`,
         description: `Yoko PWA`,
         display: 'standalone',

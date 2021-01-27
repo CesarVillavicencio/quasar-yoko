@@ -9,7 +9,7 @@ register(process.env.SERVICE_WORKER_FILE, {
   // to ServiceWorkerContainer.register()
   // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register#Parameter
 
-  // registrationOptions: { scope: './' },
+  registrationOptions: { scope: './' },
 
   ready (/* registration */) {
     // console.log('Service worker is active.')
@@ -19,8 +19,9 @@ register(process.env.SERVICE_WORKER_FILE, {
     // console.log('Service worker has been registered.')
   },
 
-  cached (/* registration */) {
-    // console.log('Content has been cached for offline use.')
+  cached ( registration ) {
+    console.log('Content has been cached for offline use.')
+    console.log('hola esto es service worker en cached');
   },
 
   updatefound (/* registration */) {
@@ -32,7 +33,7 @@ register(process.env.SERVICE_WORKER_FILE, {
   },
 
   offline () {
-    // console.log('No internet connection found. App is running in offline mode.')
+    console.log('No internet connection found. App is running in offline mode.')
   },
 
   error (/* err */) {

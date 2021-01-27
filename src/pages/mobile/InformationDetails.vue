@@ -94,7 +94,7 @@ export default {
       this.$store.dispatch('datos/getDatos', this.idReservacion);
       this.$store.getters['datos/getInformacion'];
       this.datos = this.getInformacion;
-      console.log(this.datos);
+      // console.log(this.datos);
       this.$q.loading.hide()
     },
 
