@@ -2,7 +2,7 @@
 <q-page class="flex-center back">
 
   <div class="q-pa-md flex flex-center background">
-    <div style="max-width: 300px">
+    <div style="width: 300px">
       <!-- buscador -->
    <!--    <div class="row flex-center q-pt-md">
         <div class="col-10">
@@ -38,9 +38,7 @@
         infinite>
 
         <q-carousel-slide v-for="(foto, index, key) in productos.data[this.$route.params.idMeal - 1].gallery" :name="key+1" :img-src="foto.original_url" />
-        <!-- <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
-        <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
-        <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" /> -->
+
       </q-carousel>
 
       <div class="texto q-pt-md">

@@ -30,10 +30,10 @@
           </p>
         </q-btn>
 
-        <p class="text-weight-bold titulo col-12">Meals</p>
+        <p class="text-weight-bold titulo col-12" v-if="this.categoria">{{this.categoria[0].name}}</p>
       </div>
 
-        <a :href="banner[0].target_link" target="_blank" v-if="banner[0]">
+        <a :href="banner[0].target_link" target="_blank" v-if="this.banner[0]">
           <q-img
           class ="vertical-top rounded-borders"
           :src="banner[0].image"
@@ -87,7 +87,7 @@ export default {
     return {
       model: '',
       modelo:'',
-      categorias:[],
+      categoria:'',
       productos:[],
       banner:"",
 
@@ -106,6 +106,7 @@ export default {
         }
       ],
       ruta: this.$route.params.id,
+      idCategoria: this.$route.params.idCategoria,
     }
   },
 
@@ -113,14 +114,14 @@ export default {
     this.getCategorias(), this.getProductos(), this.getBannerXid();
   },
 
-  beforeDestroy () {
-  },
+  // beforeDestroy () {
+  // },
 
   methods: {
     getCategorias(){
-      this.$axios.get('https://panel.yokoportal.com/api/v1/categories')
+      this.$axios.get('https://panel.yokoportal.com/api/v1/category/'+this.idCategoria)
       .then((response) => {
-        this.categorias = response.data.data
+        this.categoria = response.data
         // console.log(this.categorias);
         })
         .catch(() => {
@@ -167,10 +168,6 @@ export default {
           })
         })
     },
-
-    prueba(){
-      alert("hola");
-    }
   }
 }
 </script>
