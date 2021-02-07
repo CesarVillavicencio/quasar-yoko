@@ -150,7 +150,6 @@ export default {
       var idCat = this.subcategoriaSelecta.id;
       if (this.venueSelecto == null) {this.venueSelecto=""}
       var idVenue = this.venueSelecto.id;
-      // this.$axios.get('https://panel.yokoportal.com/api/v1/productos', {params:{idCategoria:idCat}})
       this.$axios.get('https://panel.yokoportal.com/api/v1/productos/'+this.idCategoria, {params:{idSubCategoria:idCat , venue_id:idVenue}})
       .then((response) => {
         this.productos = response.data
@@ -184,7 +183,7 @@ export default {
     },
 
     getVenues(){
-      this.$axios.get('http://localhost/Yoko/public/api/v1/venues')
+      this.$axios.get('https://panel.yokoportal.com/api/v1/venues')
       .then((response) => {
         this.venues = response.data.data
         })
