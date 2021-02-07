@@ -204,6 +204,14 @@ export default {
   }
 
 }
+
+// if ('serviceWorker' in navigator) {
+//   window.addEventListener('load', function() {
+//     alert("load");
+//     navigator.serviceWorker.register('/service-worker.js');
+//   });
+// }
+
 </script>
 
 <style>

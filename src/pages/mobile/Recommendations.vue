@@ -147,7 +147,9 @@ export default {
   },
 
   mounted(){
-    this.getFromVuex(), this.loadProductos(), this.getCategorias();
+    this.getFromVuex(),
+    // this.loadProductos(), 
+    this.getCategorias();
   },
 
   computed: {
@@ -179,6 +181,7 @@ export default {
 
       loadProductos(){
       this.$axios.get('https://panel.yokoportal.com/api/v1/products')
+      // this.$axios.get('http://localhost/Yoko/public/api/v1/categoriaSub/')
       .then((response) => {
         this.productos = response.data
         console.log(this.productos);
@@ -194,7 +197,8 @@ export default {
       },
 
       getCategorias(){
-      this.$axios.get('https://panel.yokoportal.com/api/v1/categories')
+      // this.$axios.get('https://panel.yokoportal.com/api/v1/categories')
+      this.$axios.get('http://localhost/Yoko/public/api/v1/categories')
       .then((response) => {
         this.categorias = response.data
         // console.log(this.categorias);

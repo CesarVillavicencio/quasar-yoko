@@ -45,12 +45,13 @@
 
       <div class="row q-pt-md">
         <div class="col-6 q-mr-xs" >
-          <q-select outlined v-model="model" :options="options" label="Category" 
+          <q-select outlined v-model="subcategoriaSelecta" :options="subcategorias" option-label="name" label="Subcategory " clearable 
           @input="getProductos()" dense/>
         </div>
 
         <div class="col-5 q-ml-xs">
-          <!-- <q-select outlined v-model="modelo" :options="options" label="Provider" dense/> -->
+          <q-select outlined v-model="venueSelecto" :options="venues" option-label="name" label="Venue " clearable 
+           @input="getProductos()" dense/>
         </div>
       </div>
       
@@ -62,7 +63,8 @@
           >
           <div class="absolute-bottom">
             <p class="imgTitle" >{{c.name}}</p>
-            <p class="imgSubtitle">{{c.schedule}}</p>
+            <!-- <p class="imgSubtitle">{{c.schedule}}</p> -->
+            <p class="imgSubtitle">{{c.description}}</p>
           </div>
         </q-img>
 
@@ -85,35 +87,42 @@ export default {
   name: 'Meals',
   data () {
     return {
-      model: '',
-      modelo:'',
+      subcategoriaSelecta: '',
+      venueSelecto:'',
       categoria:'',
+      subcategorias:[],
       productos:[],
       banner:"",
+      venues:[],
 
       options: [
         {
-          label: 'Mexicana',
+          label: 'Venue1',
           value: '1',
           description: 'Search engine',
           icon: 'mail'
         },
         {
-          label: 'Japonesa',
+          label: 'Venue2',
           value: '2',
           description: 'Social media',
           icon: 'bluetooth'
         }
       ],
+
       ruta: this.$route.params.id,
       idCategoria: this.$route.params.idCategoria,
     }
   },
 
   mounted () {
-    this.getCategorias(), this.getProductos(), this.getBannerXid();
+    this.getCategorias(), this.getProductos(), this.getBannerXid(); this.getVenues();
   },
 
+  computed: {
+    // options () {
+    //   return Object.freeze(options.slice(0, pageSize * (this.nextPage - 1)))
+    },
   // beforeDestroy () {
   // },
 
@@ -121,14 +130,15 @@ export default {
     getCategorias(){
       this.$axios.get('https://panel.yokoportal.com/api/v1/category/'+this.idCategoria)
       .then((response) => {
-        this.categoria = response.data
-        // console.log(this.categorias);
+        this.categoria = response.data.data
+        this.subcategorias = this.categoria[0].subcategories
+
         })
         .catch(() => {
           this.$q.notify({
             color: 'negative',
             position: 'top',
-            message: 'Usando notificaciones',
+            message: 'Categories Error',
             icon: 'report_problem'
           })
         })
@@ -136,17 +146,21 @@ export default {
     },
 
     getProductos(){
-      var idCat = this.model.value;
-      this.$axios.get('https://panel.yokoportal.com/api/v1/productos', {params:{idCategoria:idCat}})
+      if (this.subcategoriaSelecta == null) {this.subcategoriaSelecta=""}
+      var idCat = this.subcategoriaSelecta.id;
+      if (this.venueSelecto == null) {this.venueSelecto=""}
+      var idVenue = this.venueSelecto.id;
+      // this.$axios.get('https://panel.yokoportal.com/api/v1/productos', {params:{idCategoria:idCat}})
+      this.$axios.get('https://panel.yokoportal.com/api/v1/productos/'+this.idCategoria, {params:{idSubCategoria:idCat , venue_id:idVenue}})
       .then((response) => {
-        this.productos = response
+        this.productos = response.data
         // console.log(this.categorias);
         })
         .catch(() => {
           this.$q.notify({
             color: 'negative',
             position: 'top',
-            message: 'Usando notificaciones',
+            message: 'problema en productos',
             icon: 'report_problem'
           })
         })
@@ -163,21 +177,31 @@ export default {
           this.$q.notify({
             color: 'negative',
             position: 'top',
-            message: 'Usando notificaciones',
+            message: 'Banner Error',
             icon: 'report_problem'
           })
         })
     },
+
+    getVenues(){
+      this.$axios.get('http://localhost/Yoko/public/api/v1/venues')
+      .then((response) => {
+        this.venues = response.data.data
+        })
+        .catch(() => {
+          this.$q.notify({
+            color: 'negative',
+            position: 'top',
+            message: 'Venues Error',
+            icon: 'report_problem'
+          })
+        })
+    }
   }
 }
 </script>
 
 <style>
-.welcome{
-  color: #a9a9a9;
-  font-size: 10px;
-  margin-bottom: 0 !important;
-}
 .background{
   background-color: #fbfbfb;
 }

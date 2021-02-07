@@ -180,6 +180,9 @@ export default {
   }
 
 }
+
+
+
 </script>
 <style>
 .negro{
