@@ -190,15 +190,15 @@ export default {
           this.$q.notify({
             color: 'negative',
             position: 'top',
-            message: 'Usando notificaciones',
+            message: 'loadProducts error',
             icon: 'report_problem'
           })
         })
       },
 
       getCategorias(){
-      // this.$axios.get('https://panel.yokoportal.com/api/v1/categories')
-      this.$axios.get('http://localhost/Yoko/public/api/v1/categories')
+      this.$axios.get('https://panel.yokoportal.com/api/v1/categories')
+      // this.$axios.get('http://localhost/Yoko/public/api/v1/categories')
       .then((response) => {
         this.categorias = response.data
         // console.log(this.categorias);
@@ -207,7 +207,7 @@ export default {
           this.$q.notify({
             color: 'negative',
             position: 'top',
-            message: 'Usando notificaciones',
+            message: 'Getcats notificaciones',
             icon: 'report_problem'
           })
         })
