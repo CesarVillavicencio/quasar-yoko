@@ -2,7 +2,7 @@
 <q-page class="flex-center back">
 
   <div class="q-pa-md flex flex-center background">
-    <div style="width: 300px">
+    <div style="width: 300px" v-if="producto.data">
       <!-- buscador -->
    <!--    <div class="row flex-center q-pt-md">
         <div class="col-10">
@@ -28,22 +28,22 @@
         </p>
       </q-btn>
 
-      <p class="flex flex-center titulo">{{productos.data[this.$route.params.idMeal - 1].name}}</p>
+      <p class="flex flex-center titulo">{{producto.data[0].name}}</p>
 
-      <q-carousel
+      <q-carousel v-if ="producto.data[0].gallery != 0"
         animated
         v-model="slide"
         arrows
         navigation
         infinite>
 
-        <q-carousel-slide v-for="(foto, index, key) in productos.data[this.$route.params.idMeal - 1].gallery" :name="key+1" :img-src="foto.original_url" />
+        <q-carousel-slide v-for="(foto, index, key) in producto.data[0].gallery" :name="key+1" :img-src="foto.original_url"/>
 
       </q-carousel>
 
       <div class="texto q-pt-md">
         <p> 
-        {{productos.data[this.$route.params.idMeal - 1].detail}}
+        {{producto.data[0].description}}
         </p>
       </div>
 
@@ -67,7 +67,7 @@
       </div>
 
       <div class="flex flex-center q-pt-xl">
-        <q-btn type="a" class="button" color="black" label="Reserva"  :href="productos.data[this.$route.params.idMeal - 1].purchase_link" target="_blank"/>
+        <q-btn type="a" class="button" color="black" label="Reserva"  :href="producto.data[0].venue.website" target="_blank"/>
         <!-- <q-btn class="button" color="black" label="Reservacion" />   -->
       </div>
       
@@ -97,7 +97,8 @@ Vue.use(VueGoogleMaps, {
 export default {
   data () {
     return {
-      productos:[],
+      producto:[],
+      idProducto: this.$route.params.idMeal,
       slide:1,
 
       position:'determinando...',
@@ -117,7 +118,7 @@ export default {
   },
 
   mounted(){
-    this.getCurrentPosition(), this.getProductos();
+    this.getCurrentPosition(), this.getproducto();
 
     // we start listening
     this.geoId = Geolocation.watchPosition({}, (position, err) => {
@@ -152,10 +153,11 @@ export default {
       })
     },
 
-    getProductos(){
-      this.$axios.get('https://panel.yokoportal.com/api/v1/products')
+    getproducto(){
+      // this.$axios.get('http://127.0.0.1:8000/api/v1/product/'+this.idProducto)
+      this.$axios.get('https://panel.yokoportal.com/api/v1/product/'+this.idProducto)
       .then((response) => {
-        this.productos = response.data
+        this.producto = response.data
         })
         .catch(() => {
           this.$q.notify({
