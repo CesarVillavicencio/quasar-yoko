@@ -1,6 +1,6 @@
 <template >
 <!-- <q-page class="flex-center black" v-bind:style='{ backgroundImage: "url(" + cover + ")", }'> -->
-<q-page class="flex-center black" v-bind:style= '[cover != "" ? {backgroundImage: "url(" + cover + ")"} : {backgroundImage: "url(img/fondo.png)"}]'>
+<q-page class="flex-center black" v-bind:style= '[cover != "" ? {backgroundImage: "url(" + cover + ")"} : {}]'>
 
  <div class="q-pa-md flex flex-center">
     <div>
@@ -111,7 +111,7 @@ export default {
 <style>
 .black{
   /*background-color: black;*/
-  /*background-image:url(~assets/fondo.png);*/
+  background-image:url(~assets/fondo.png);
   background-repeat: no-repeat;
   background-size: cover;
 
