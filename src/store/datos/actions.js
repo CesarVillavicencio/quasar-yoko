@@ -7,10 +7,10 @@ export function getDatos ({commit}, ruta) {
       commit('setInformacion', response.data)
     }).catch(err => console.log(err));
 
-    return axios.get('https://panel.yokoportal.com/api/v1/products')
-    .then(response => {
-      commit('setProductos', response.data)
-    }).catch(err => console.log(err))
+    // return axios.get('https://panel.yokoportal.com/api/v1/products')
+    // .then(response => {
+    //   commit('setProductos', response.data)
+    // }).catch(err => console.log(err))
 }
 
 // export function getProductos ({commit}, ruta) {

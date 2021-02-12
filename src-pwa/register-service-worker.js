@@ -16,11 +16,11 @@ register(process.env.SERVICE_WORKER_FILE, {
     console.log('Service worker is active.')
     console.log(registration)
 
-    caches.open('v1').then(function(cache) {
-      return cache.addAll([
-        '../src/pages/mobile/HomeInformation.vue',
-      ]);
-    })
+    // caches.open('v1').then(function(cache) {
+    //   return cache.addAll([
+    //     '../src/pages/mobile/HomeInformation.vue',
+    //   ]);
+    // })
   },
 
   registered ( registration ) {

@@ -1,12 +1,12 @@
-<template>
-<q-page class="flex-center black" style="">
- <div class="q-pa-md flex flex-center" v-if="getInformacion.data">
-    <div>
-      <!-- <div class="q-pb-md row"> -->
+<template >
+<!-- <q-page class="flex-center black" v-bind:style='{ backgroundImage: "url(" + cover + ")", }'> -->
+<q-page class="flex-center black" v-bind:style= '[cover != "" ? {backgroundImage: "url(" + cover + ")"} : {backgroundImage: "url(img/fondo.png)"}]'>
 
+ <div class="q-pa-md flex flex-center">
+    <div>
         <div class="row" style="padding-top:7em;">
           <div class="col-2">
-            <q-avatar size="70px">
+            <q-avatar size="70px" >
               <img class="imgPrincipal float-left" :src="getInformacion.data.property.host.photo">
             </q-avatar> 
           </div>
@@ -45,7 +45,6 @@
           >
         </div>
         
-      <!-- </div>   -->
     </div>
   </div>
 </q-page>
@@ -60,8 +59,9 @@ import {Loading, QSpinnerGears} from 'quasar'
 export default {
   data(){
     return{
-      name: 'App',
+      name: 'Index',
       datos:[],
+      cover:"",
       ruta: this.$route.params.id,
     }    
   },
@@ -73,17 +73,18 @@ export default {
   computed: {
     ...mapGetters('datos', [
             'getInformacion',
-        ]),
-    
+        ]),    
   },
 
   methods:{
     getFromVuex(){
       this.$q.loading.show()
-      this.$store.dispatch('datos/getDatos', this.ruta);
+      this.$store.dispatch('datos/getDatos', this.ruta).then(() => {
+        this.cover = this.$store.state.datos.informacion.data.property.cover;
+      });
+
       this.$store.getters['datos/getInformacion'];
-      this.datos = this.getInformacion;
-      console.log(this.datos);
+
       this.$q.loading.hide()
     },
 
@@ -110,7 +111,7 @@ export default {
 <style>
 .black{
   /*background-color: black;*/
-  background-image:url(~assets/fondo.png);
+  /*background-image:url(~assets/fondo.png);*/
   background-repeat: no-repeat;
   background-size: cover;
 

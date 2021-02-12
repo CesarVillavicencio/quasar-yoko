@@ -158,8 +158,7 @@ export default {
 
   computed: {
     ...mapGetters('datos', [
-            'getInformacion',
-            'getProrudctos'
+            'getInformacion'
         ]),
     
   },
@@ -169,7 +168,6 @@ export default {
       this.$q.loading.show()
       this.$store.dispatch('datos/getDatos', this.idReserva);
       this.$store.getters['datos/getInformacion'];
-      this.$store.getters['datos/getProrudctos'];
       this.datos = this.getInformacion;
       // console.log(this.datos);
       this.$q.loading.hide()

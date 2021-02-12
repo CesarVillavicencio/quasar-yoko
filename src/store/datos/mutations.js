@@ -3,8 +3,8 @@ export function setInformacion(state, payload){
 
 }
 
-export function setProductos(state, payload){
-	state.productos = payload
+// export function setProductos(state, payload){
+// 	state.productos = payload
 
-}
+// }
 
